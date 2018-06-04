@@ -138,28 +138,12 @@ var Home = function (_Component) {
       console.log('swag');
     };
 
-    _this.state = {
-      name: 'Joe'
-    };
-    return _this;
-  }
-
-  _createClass(Home, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'h1',
-          null,
-          'Connecting People ',
-          _react2.default.createElement('br', null),
-          ' Everywhere'
-        ),
-        _react2.default.createElement(
-          'section',
-          { className: 'links' },
+    _this.loopCategories = function () {
+      var testArray = [1, 2, 3, 4, 5, 6, 7];
+      return testArray.map(function () {
+        return _react2.default.createElement(
+          'div',
+          { className: 'categories' },
           _react2.default.createElement(
             'div',
             { className: 'title' },
@@ -227,6 +211,53 @@ var Home = function (_Component) {
               'a',
               { href: '#', className: 'link' },
               'Pets'
+            )
+          )
+        );
+      });
+    };
+
+    _this.state = {
+      name: 'Joe'
+    };
+    return _this;
+  }
+
+  _createClass(Home, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'h1',
+          null,
+          'Connecting People ',
+          _react2.default.createElement('br', null),
+          ' Everywhere'
+        ),
+        _react2.default.createElement(
+          'section',
+          { className: 'links' },
+          this.loopCategories()
+        ),
+        _react2.default.createElement(
+          'section',
+          { className: 'trending' },
+          _react2.default.createElement('input', { type: 'text', name: 'search', className: 'search' }),
+          _react2.default.createElement(
+            'div',
+            { className: 'title' },
+            _react2.default.createElement('i', { className: 'far fa-clock' }),
+            ' Trending Now'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'trending-tags' },
+            _react2.default.createElement(
+              'div',
+              { className: 'tag' },
+              'Apple macbook'
             )
           )
         )
