@@ -1,66 +1,72 @@
 @import url( 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
 @import "reset";
 
+*{
+  box-sizing: border-box;
+}
+
+html,
 body {
   font-family: 'Roboto', sans-serif;
-  background: yellow;
+  background-image: linear-gradient(135deg, rgba(52,62,247,.8) 0%, rgba(39,230,230,.8) 100%),
+   url("https://www.drafttournament.com/wp-content/uploads/2016/08/bg3.jpg");
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-positon: center center;
+  min-height: 100vh;
+  
 }
 
-h1 {
-  font-weight: 100;
-  font-size: 50px;
-}
+header{
+  padding: 20px;
+  display:flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  color:white;
 
-.home {
-  height: 100%;
-  width: 100%;
-  text-align: center;
-
-  img {
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
+  .fas{
+    margin-left: 5px;
   }
 
-  .Aligner {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  .left-menu{
+    display:flex;
+    .logo{
+      font-size: 2rem;
+      display:flex;
+      justify-content: center;
+      align-items:center;
+    }
+    .city{
+      display:flex;
+      justify-content: center;
+      align-items:center;
+      padding: 15px 20px;
 
-  .Aligner-item {
-    max-width: 50%;
-  }
-
-  .menu {
-    ul {
-      li {
-        padding: 10px 15px;
-        display: inline-block;
-        font-family: 'Roboto', sans-serif;
-        font-size: 18px;
-        font-weight: 500;
-      }
     }
   }
 
-  .version-num {
-    background: #E8E8E8;
-    border-radius: 4px;
-    padding: 7px 15px;
-    display: inline-block;
-    font-size: 12px;
-    margin: 10px 0 20px;
-  }
+  .right-menu{
+    display:flex;
+    .user-img{
+      display:flex;
+      justify-content: center;
+      align-items:center;
+    }
+    .user-dropdown{
+      display:flex;
+      justify-content: center;
+      align-items:center;
+      padding: 15px 20px;
 
-  a {
-    text-decoration: none;
-    color: #30395C;
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-      color: #43D4D6;
+    }
+      .post-btn{
+        font-weight:300;
+        text-transform: capitalize;
+        padding: 15px 20px;
+        background:rgb(0, 85, 255);
+        color:white;
+        padding: 15px 20px;
     }
   }
 }
+

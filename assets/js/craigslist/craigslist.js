@@ -1,23 +1,8 @@
 import React, { Component} from 'react'
 import ReactDOM from 'react-dom'
+import App from './App.js'
 
-class Layout extends Component {
-  constructor () {
-    super()
-    this.state = {
-      name: 'Joe'
-    }
-  }
-  clickedBtn = () => {
-    console.log('swag')
-  }
-  render () {
-    return (<div>
-      This is a home page
-    </div>)
-  }
-}
 
 const app = document.getElementById('app')
 
-ReactDOM.render(<Layout />, app)
+ReactDOM.render(<App />, app)
