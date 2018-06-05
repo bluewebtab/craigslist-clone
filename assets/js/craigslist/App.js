@@ -1,7 +1,15 @@
 import React, { Component} from 'react'
 import ReactDOM from 'react-dom'
+import{
+  BrowserRouter as Router,
+  Route,
+  NavLink
+} from 'react-router-dom'
+
 import Header from './includes/Header.js'
 import Home from './pages/Home.js'
+import Listings from './pages/Listings.js'
+
 
 
 export default class App extends Component {
@@ -15,10 +23,16 @@ export default class App extends Component {
     console.log('swag')
   }
   render () {
-    return (<div>
+    return (
+    <Router>
+    <div>
       <Header/>
-      <Home />
-    </div>)
+      <Route exact path = "/" component = {Home} />
+      <Route exact path = "/losangeles/community/artists" component = {Listings} />
+
+    </div>
+    </Router>
+    )
   }
 }
 
