@@ -14,11 +14,12 @@ export default class Listings extends Component {
   render() {
     const{match, location, history} = this.props
     return (
-      <div className = "listings">
+      <div className = "listings-page">
         <div className = "container">
-        <section className = "filter">
+        <section id = "filter">
           <div className="form-group price">
             <label>Price</label>
+            <div className="min-max">
             <select name = "min-price" className="min-price">
               <option value = "0">0</option>
 
@@ -27,7 +28,7 @@ export default class Listings extends Component {
               <option value = "1000">1000</option>
 
             </select>
-
+              </div>
           </div>
           <div className="form-group make">
             <label>Make</label>
@@ -51,7 +52,7 @@ export default class Listings extends Component {
 
           </div>
         </section>
-        <section className="list-view">
+        <section id="list-view">
           <section className="change-view">
           <div className="form-group view-dropdown">
             <select name = "model" className="select-view">
