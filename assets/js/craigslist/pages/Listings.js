@@ -10,13 +10,37 @@ export default class Listings extends Component {
     }
   }
 
+  loopItems = () => {
+    let testArray = [1, 2, 3, 4, 5, 6, 7]
+    return testArray.map((item, i) => {
+      return (
+        <div className="item">
+        <div className = "image">
+        <div className="price">
+          $9000
+        </div>
+        
+        </div>
+        <div className="details">
+          <h5>Dodge Challenger
+          <i className="far fa-star"></i>
+          </h5>
+          <h6>Beverly Hills</h6>
+        </div>
+      </div>
+      )
+    })
+  }
+
   
   render() {
     const{match, location, history} = this.props
     return (
       <div className = "listings-page">
-        <div className = "container">
+      <div className = "container">
+
         <section id = "filter">
+
           <div className="form-group price">
             <label>Price</label>
             <div className="min-max">
@@ -52,7 +76,10 @@ export default class Listings extends Component {
 
           </div>
         </section>
+        </div>
         <section id="list-view">
+          <div className = "container">
+          <div className = "white-box">
           <section className="change-view">
           <div className="form-group view-dropdown">
             <select name = "model" className="select-view">
@@ -72,23 +99,14 @@ export default class Listings extends Component {
           </div>
           </section>
           <section className="all-items">
-            <div className="item">
-              <div className = "image">
-              <div className="price">
-                $9000
-              </div>
-              image
-              </div>
-              <div className="details">
-                <h5>Title</h5>
-                <h6>City</h6>
-              </div>
-            </div>
-          
+            {this.loopItems()}
+           
           </section>
+          </div>
+          </div>
         </section>
         </div>      
-      </div>
+      
     )
   }
 }
