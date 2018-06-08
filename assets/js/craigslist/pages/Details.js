@@ -16,10 +16,11 @@ export default class Details extends Component {
     return (
       <div className = "details-page">
         <div className = "container">
+          <div className = "white-box">
           <section className = "submenu">
           <div className = "direction">
-          <div className = "prev">Prev</div>
-          <div className = "next">Next</div>
+          <a href = "#" className = "prev">Prev</a>
+          <a href = "#" className = "next">Next</a>
 
           </div>
 
@@ -32,24 +33,42 @@ export default class Details extends Component {
           </nav>
           </section>
 
-          <section>
+          <section className = "content-area">
           <div className = "media-column">
             <div className = "gallery">
             <div className = "slider">
             <div className = "main-image">
-            <div className = "left-arrow">
-            
-            
-            </div>
-            <div className = "right-arrow">
-            
-            </div>
-
+            <div className = "arrows left-arrow">{"<"}</div>
+            <div className = " arrows right-arrow">{">"}</div>
+            <div className = "image-1" style = {{
+                "backgroundImage": "url('https://img.autobytel.com/car-reviews/autobytel/11694-good-looking-sports-cars/2016-Ford-Mustang-GT-burnout-red-tire-smoke.jpg')"  }}>
+              </div>
             </div>
             </div>
             <div className = "thumbnails">
-              <div className = "thumb-img">
-              img
+              <div className = "thumb-img" style = {{
+                "backgroundImage": "url('https://img.autobytel.com/car-reviews/autobytel/11694-good-looking-sports-cars/2016-Ford-Mustang-GT-burnout-red-tire-smoke.jpg')"  }}>
+              
+              </div>
+              <div className = "thumb-img" style = {{
+                "backgroundImage": "url('https://img.autobytel.com/car-reviews/autobytel/11694-good-looking-sports-cars/2016-Ford-Mustang-GT-burnout-red-tire-smoke.jpg')"  }}>
+              
+              </div>
+              <div className = "thumb-img" style = {{
+                "backgroundImage": "url('https://img.autobytel.com/car-reviews/autobytel/11694-good-looking-sports-cars/2016-Ford-Mustang-GT-burnout-red-tire-smoke.jpg')"  }}>
+              
+              </div>
+              <div className = "thumb-img" style = {{
+                "backgroundImage": "url('https://img.autobytel.com/car-reviews/autobytel/11694-good-looking-sports-cars/2016-Ford-Mustang-GT-burnout-red-tire-smoke.jpg')"  }}>
+              
+              </div>
+              <div className = "thumb-img" style = {{
+                "backgroundImage": "url('https://img.autobytel.com/car-reviews/autobytel/11694-good-looking-sports-cars/2016-Ford-Mustang-GT-burnout-red-tire-smoke.jpg')"  }}>
+              
+              </div>
+              <div className = "thumb-img" style = {{
+                "backgroundImage": "url('https://img.autobytel.com/car-reviews/autobytel/11694-good-looking-sports-cars/2016-Ford-Mustang-GT-burnout-red-tire-smoke.jpg')"  }}>
+              
               </div>
             </div>
             </div>
@@ -79,6 +98,7 @@ export default class Details extends Component {
           </div>
           </div>
           </section>
+        </div>
         </div>
       </div>
     )
