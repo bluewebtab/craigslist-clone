@@ -447,8 +447,8 @@ var Details = function (_Component) {
                 ),
                 _react2.default.createElement(
                   'h3',
-                  null,
-                  ' Red Dodge Challenger (2018)'
+                  { className: 'title' },
+                  ' Red Dodge Challenger'
                 ),
                 _react2.default.createElement(
                   'h4',
@@ -499,15 +499,67 @@ var Details = function (_Component) {
                       null,
                       'Manual'
                     )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'info' },
+                    _react2.default.createElement(
+                      'label',
+                      null,
+                      'VIN'
+                    ),
+                    _react2.default.createElement(
+                      'h5',
+                      null,
+                      'WYYUHK756GHBB89CHJ'
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'info' },
+                    _react2.default.createElement(
+                      'label',
+                      null,
+                      'Mileage'
+                    ),
+                    _react2.default.createElement(
+                      'h5',
+                      null,
+                      '4567'
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'info' },
+                    _react2.default.createElement(
+                      'label',
+                      null,
+                      'Transmission'
+                    ),
+                    _react2.default.createElement(
+                      'h5',
+                      null,
+                      'Manual'
+                    )
                   )
                 ),
                 _react2.default.createElement(
                   'div',
                   { className: 'description' },
                   _react2.default.createElement(
+                    'label',
+                    null,
+                    'Description'
+                  ),
+                  _react2.default.createElement(
                     'p',
                     null,
-                    'This is where the description goes'
+                    'Lorem ipsum dolor amet vHS neutra unicorn marfa lomo crucifix tousled selfies palo santo. Banjo ugh health goth master cleanse put a bird on it paleo poke actually ennui franzen jean shorts pitchfork vice pop-up yr. Raclette blue bottle man bun biodiesel edison bulb. Distillery vexillologist franzen pug pop-up, blog mumblecore adaptogen meggings glossier ethical unicorn. Cliche godard coloring book hella, hell of seitan keffiyeh pok pok gluten-free butcher hammock echo park food truck blue bottle. Direct trade ennui cloud bread pour-over, offal kogi ramps humblebrag. Vexillologist everyday carry tumeric chicharrones narwhal dreamcatcher, farm-to-table migas artisan poutine kitsch hexagon gluten-free wolf keffiyeh.'
+                  ),
+                  _react2.default.createElement(
+                    'p',
+                    null,
+                    'Lorem ipsum dolor amet vHS neutra unicorn marfa lomo crucifix tousled selfies palo santo. Banjo ugh health goth master cleanse put a bird on it paleo poke actually ennui franzen jean shorts pitchfork vice pop-up yr. Raclette blue bottle man bun biodiesel edison bulb. Distillery vexillologist franzen pug pop-up, blog mumblecore adaptogen meggings glossier ethical unicorn. Cliche godard coloring book hella, hell of seitan keffiyeh pok pok gluten-free butcher hammock echo park food truck blue bottle. Direct trade ennui cloud bread pour-over, offal kogi ramps humblebrag. Vexillologist everyday carry tumeric chicharrones narwhal dreamcatcher, farm-to-table migas artisan poutine kitsch hexagon gluten-free wolf keffiyeh.'
                   )
                 )
               )

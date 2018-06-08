@@ -75,7 +75,7 @@ export default class Details extends Component {
           </div>
           <div className = "details-column">
           <div className = "date">Posted: June 6th</div>
-          <h3> Red Dodge Challenger (2018)</h3>
+          <h3 className="title"> Red Dodge Challenger</h3>
           <h4 className = "price"> $50,000
           </h4>
           <div className ="more-details">
@@ -91,9 +91,23 @@ export default class Details extends Component {
           <label>Transmission</label>
           <h5>Manual</h5>
           </div>
+          <div className = "info">
+          <label>VIN</label>
+          <h5>WYYUHK756GHBB89CHJ</h5>
+          </div>
+          <div className = "info">
+          <label>Mileage</label>
+          <h5>4567</h5>
+          </div>
+          <div className = "info">
+          <label>Transmission</label>
+          <h5>Manual</h5>
+          </div>
           </div>
           <div className = "description">
-            <p>This is where the description goes</p>
+          <label>Description</label>
+            <p>Lorem ipsum dolor amet vHS neutra unicorn marfa lomo crucifix tousled selfies palo santo. Banjo ugh health goth master cleanse put a bird on it paleo poke actually ennui franzen jean shorts pitchfork vice pop-up yr. Raclette blue bottle man bun biodiesel edison bulb. Distillery vexillologist franzen pug pop-up, blog mumblecore adaptogen meggings glossier ethical unicorn. Cliche godard coloring book hella, hell of seitan keffiyeh pok pok gluten-free butcher hammock echo park food truck blue bottle. Direct trade ennui cloud bread pour-over, offal kogi ramps humblebrag. Vexillologist everyday carry tumeric chicharrones narwhal dreamcatcher, farm-to-table migas artisan poutine kitsch hexagon gluten-free wolf keffiyeh.</p>
+            <p>Lorem ipsum dolor amet vHS neutra unicorn marfa lomo crucifix tousled selfies palo santo. Banjo ugh health goth master cleanse put a bird on it paleo poke actually ennui franzen jean shorts pitchfork vice pop-up yr. Raclette blue bottle man bun biodiesel edison bulb. Distillery vexillologist franzen pug pop-up, blog mumblecore adaptogen meggings glossier ethical unicorn. Cliche godard coloring book hella, hell of seitan keffiyeh pok pok gluten-free butcher hammock echo park food truck blue bottle. Direct trade ennui cloud bread pour-over, offal kogi ramps humblebrag. Vexillologist everyday carry tumeric chicharrones narwhal dreamcatcher, farm-to-table migas artisan poutine kitsch hexagon gluten-free wolf keffiyeh.</p>
 
           </div>
           </div>
