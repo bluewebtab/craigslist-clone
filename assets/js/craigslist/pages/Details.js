@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import Gallery from './components/Gallery.js';
 
 
 export default class Details extends Component {
@@ -35,47 +36,11 @@ export default class Details extends Component {
 
           <section className = "content-area">
           <div className = "media-column">
-            <div className = "gallery">
-            <div className = "slider">
-            <div className = "main-image">
-            <div className = "arrows left-arrow">{"<"}</div>
-            <div className = " arrows right-arrow">{">"}</div>
-            <div className = "image-1" style = {{
-                "backgroundImage": "url('https://img.autobytel.com/car-reviews/autobytel/11694-good-looking-sports-cars/2016-Ford-Mustang-GT-burnout-red-tire-smoke.jpg')"  }}>
-              </div>
-            </div>
-            </div>
-            <div className = "thumbnails">
-              <div className = "thumb-img" style = {{
-                "backgroundImage": "url('https://img.autobytel.com/car-reviews/autobytel/11694-good-looking-sports-cars/2016-Ford-Mustang-GT-burnout-red-tire-smoke.jpg')"  }}>
-              
-              </div>
-              <div className = "thumb-img" style = {{
-                "backgroundImage": "url('https://img.autobytel.com/car-reviews/autobytel/11694-good-looking-sports-cars/2016-Ford-Mustang-GT-burnout-red-tire-smoke.jpg')"  }}>
-              
-              </div>
-              <div className = "thumb-img" style = {{
-                "backgroundImage": "url('https://img.autobytel.com/car-reviews/autobytel/11694-good-looking-sports-cars/2016-Ford-Mustang-GT-burnout-red-tire-smoke.jpg')"  }}>
-              
-              </div>
-              <div className = "thumb-img" style = {{
-                "backgroundImage": "url('https://img.autobytel.com/car-reviews/autobytel/11694-good-looking-sports-cars/2016-Ford-Mustang-GT-burnout-red-tire-smoke.jpg')"  }}>
-              
-              </div>
-              <div className = "thumb-img" style = {{
-                "backgroundImage": "url('https://img.autobytel.com/car-reviews/autobytel/11694-good-looking-sports-cars/2016-Ford-Mustang-GT-burnout-red-tire-smoke.jpg')"  }}>
-              
-              </div>
-              <div className = "thumb-img" style = {{
-                "backgroundImage": "url('https://img.autobytel.com/car-reviews/autobytel/11694-good-looking-sports-cars/2016-Ford-Mustang-GT-burnout-red-tire-smoke.jpg')"  }}>
-              
-              </div>
-            </div>
-            </div>
+            <Gallery />
           </div>
           <div className = "details-column">
           <div className = "date">Posted: June 6th</div>
-          <h3 className="title"> Red Dodge Challenger</h3>
+          <h3 className="title"> Dodge Challenger</h3>
           <h4 className = "price"> $50,000
           </h4>
           <div className ="more-details">
