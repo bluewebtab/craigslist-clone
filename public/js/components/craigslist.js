@@ -418,7 +418,7 @@ var Details = function (_Component) {
                 _react2.default.createElement(
                   'h4',
                   { className: 'price' },
-                  ' $50,000'
+                  ' $20,000'
                 ),
                 _react2.default.createElement(
                   'div',
@@ -1007,7 +1007,7 @@ var Gallery = function (_Component) {
 
     _this.allImgsLoop = function () {
       return _this.state.allImgs.map(function (item, i) {
-        return _react2.default.createElement('div', { key: i, className: 'thumb-img', style: {
+        return _react2.default.createElement('div', { key: i, onClick: _this.clickedThumb.bind(null, i), className: 'thumb-img', style: {
             "backgroundImage": 'url(' + item + ')' } });
       });
     };
@@ -1026,6 +1026,13 @@ var Gallery = function (_Component) {
           currentIndex: _this.state.currentIndex - 1
         });
       }
+    };
+
+    _this.clickedThumb = function (index) {
+
+      _this.setState({
+        currentIndex: index
+      });
     };
 
     _this.state = {
@@ -1060,12 +1067,12 @@ var Gallery = function (_Component) {
             _react2.default.createElement(
               'div',
               { className: 'arrows left-arrow', onClick: this.prevBtn },
-              "<"
+              _react2.default.createElement('i', { className: 'fas fa-chevron-left' })
             ),
             _react2.default.createElement(
               'div',
               { className: ' arrows right-arrow', onClick: this.nextBtn },
-              ">"
+              _react2.default.createElement('i', { className: 'fas fa-chevron-right' })
             ),
             _react2.default.createElement('div', { className: 'image-1', style: {
                 "backgroundImage": 'url(\'' + this.state.allImgs[this.state.currentIndex] + '\')' } })

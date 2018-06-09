@@ -41,7 +41,7 @@ export default class Details extends Component {
           <div className = "details-column">
           <div className = "date">Posted: June 6th</div>
           <h3 className="title"> Dodge Challenger</h3>
-          <h4 className = "price"> $50,000
+          <h4 className = "price"> $20,000
           </h4>
           <div className ="more-details">
           <div className = "info">
