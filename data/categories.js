@@ -80,7 +80,7 @@ slug: 'rooms-wanted'
   title: "jobs",
   listings: [
     {
-       name: 'accounting+finance',
+       name: 'accounting and finance',
        slug: 'accounting-and-finance'
     },
     {
@@ -126,7 +126,7 @@ slug: 'education'
       slug: 'appliances'
    },
    {
-    name: 'arts+crafts',
+    name: 'arts and crafts',
     slug: 'arts-and-crafts'
  },
  {
@@ -146,7 +146,7 @@ name: 'books',
 slug: 'books'
 },
 {
-name: 'cars+trucks',
+name: 'cars and trucks',
 slug: 'cars-and-trucks'
 }
   ]
