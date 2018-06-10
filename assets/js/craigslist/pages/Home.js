@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
-import categories from '../../../../data/categories.js'
 
 
 export default class Home extends Component {
