@@ -9,7 +9,7 @@ export default class Home extends Component {
     super()
     this.state = {
       name: 'Joe',
-      categoriesData: categories
+      categoriesData: ''
     }
     
   }
@@ -33,30 +33,33 @@ export default class Home extends Component {
     console.log('swag')
   }
   loopCategories = () => {
+    if(this.state.categoriesData != ''){
+      return this.state.categoriesData.map((category, i) => {
+        const loopListings = () =>{
+         return category.listings.map((listing, index) =>{
+           return (
+            <a href={`${category.title}/${listing.slug}`} className="link" key = {index}>
+            {listing.name}
+            </a>
+           )
+         })
 
-    return this.state.categoriesData.map((category, i) => {
-      return (
-        <div className="categories" key = {i} >
-        
-          <div className="title">{category.title}</div>
-          <div className="group-links">
-            <a href="#" className="link">Community</a>
-            <a href="#" className="link">General</a>
-            <a href="#" className="link">Activities</a>
-            <a href="#" className="link">Groups</a>
-            <a href="#" className="link">Artists</a>
-            <a href="#" className="link">Local News</a>
-            <a href="#" className="link">Child Care</a>
-            <a href="#" className="link">Lost & Found</a>
-            <a href="#" className="link">Classes</a>
-            <a href="#" className="link">Musician</a>
-            <a href="#" className="link">Events</a>
-            <a href="#" className="link">Pets</a>
+        }
+        return (
+          <div className="categories" key = {i} >
+          
+            <div className="title">{category.title}</div>
+            <div className="group-links">
+            {loopListings()}
+            </div>
           </div>
-        </div>
-      )
-    })
-  }
+        )
+      })
+    }else{
+      return 'LOADING'
+    }
+    }
+    
 
   loopTags = () => {
     let testTags = ['a', 'b', 'c', 'd','f','g', 'h']

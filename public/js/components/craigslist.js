@@ -591,82 +591,35 @@ var Home = function (_Component) {
     };
 
     _this.loopCategories = function () {
-
-      return _this.state.categoriesData.map(function (category, i) {
-        return _react2.default.createElement(
-          'div',
-          { className: 'categories', key: i },
-          _react2.default.createElement(
+      if (_this.state.categoriesData != '') {
+        return _this.state.categoriesData.map(function (category, i) {
+          var loopListings = function loopListings() {
+            return category.listings.map(function (listing, index) {
+              return _react2.default.createElement(
+                'a',
+                { href: category.title + '/' + listing.slug, className: 'link', key: index },
+                listing.name
+              );
+            });
+          };
+          return _react2.default.createElement(
             'div',
-            { className: 'title' },
-            category.title
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'group-links' },
+            { className: 'categories', key: i },
             _react2.default.createElement(
-              'a',
-              { href: '#', className: 'link' },
-              'Community'
+              'div',
+              { className: 'title' },
+              category.title
             ),
             _react2.default.createElement(
-              'a',
-              { href: '#', className: 'link' },
-              'General'
-            ),
-            _react2.default.createElement(
-              'a',
-              { href: '#', className: 'link' },
-              'Activities'
-            ),
-            _react2.default.createElement(
-              'a',
-              { href: '#', className: 'link' },
-              'Groups'
-            ),
-            _react2.default.createElement(
-              'a',
-              { href: '#', className: 'link' },
-              'Artists'
-            ),
-            _react2.default.createElement(
-              'a',
-              { href: '#', className: 'link' },
-              'Local News'
-            ),
-            _react2.default.createElement(
-              'a',
-              { href: '#', className: 'link' },
-              'Child Care'
-            ),
-            _react2.default.createElement(
-              'a',
-              { href: '#', className: 'link' },
-              'Lost & Found'
-            ),
-            _react2.default.createElement(
-              'a',
-              { href: '#', className: 'link' },
-              'Classes'
-            ),
-            _react2.default.createElement(
-              'a',
-              { href: '#', className: 'link' },
-              'Musician'
-            ),
-            _react2.default.createElement(
-              'a',
-              { href: '#', className: 'link' },
-              'Events'
-            ),
-            _react2.default.createElement(
-              'a',
-              { href: '#', className: 'link' },
-              'Pets'
+              'div',
+              { className: 'group-links' },
+              loopListings()
             )
-          )
-        );
-      });
+          );
+        });
+      } else {
+        return 'LOADING';
+      }
     };
 
     _this.loopTags = function () {
@@ -682,7 +635,7 @@ var Home = function (_Component) {
 
     _this.state = {
       name: 'Joe',
-      categoriesData: _categories2.default
+      categoriesData: ''
     };
 
     return _this;
