@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 116:
+/***/ 123:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16,29 +16,29 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(14);
+var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(246);
+var _reactRouterDom = __webpack_require__(273);
 
-var _Header = __webpack_require__(119);
+var _Header = __webpack_require__(144);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Home = __webpack_require__(122);
+var _Home = __webpack_require__(147);
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _Listings = __webpack_require__(123);
+var _Listings = __webpack_require__(148);
 
 var _Listings2 = _interopRequireDefault(_Listings);
 
-var _Category = __webpack_require__(120);
+var _Category = __webpack_require__(145);
 
 var _Category2 = _interopRequireDefault(_Category);
 
-var _Details = __webpack_require__(121);
+var _Details = __webpack_require__(146);
 
 var _Details2 = _interopRequireDefault(_Details);
 
@@ -95,7 +95,7 @@ exports.default = App;
 
 /***/ }),
 
-/***/ 118:
+/***/ 143:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -105,11 +105,11 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(14);
+var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _App = __webpack_require__(116);
+var _App = __webpack_require__(123);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -121,7 +121,7 @@ _reactDom2.default.render(_react2.default.createElement(_App2.default, null), ap
 
 /***/ }),
 
-/***/ 119:
+/***/ 144:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -137,7 +137,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(14);
+var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -223,7 +223,7 @@ exports.default = Header;
 
 /***/ }),
 
-/***/ 120:
+/***/ 145:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -239,7 +239,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(14);
+var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -291,7 +291,7 @@ exports.default = Category;
 
 /***/ }),
 
-/***/ 121:
+/***/ 146:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -307,11 +307,11 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(14);
+var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _Gallery = __webpack_require__(124);
+var _Gallery = __webpack_require__(149);
 
 var _Gallery2 = _interopRequireDefault(_Gallery);
 
@@ -542,7 +542,7 @@ exports.default = Details;
 
 /***/ }),
 
-/***/ 122:
+/***/ 147:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -558,9 +558,17 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(14);
+var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _axios = __webpack_require__(125);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _categories = __webpack_require__(150);
+
+var _categories2 = _interopRequireDefault(_categories);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -583,15 +591,15 @@ var Home = function (_Component) {
     };
 
     _this.loopCategories = function () {
-      var testArray = [1, 2, 3, 4, 5, 6, 7];
-      return testArray.map(function (item, i) {
+
+      return _this.state.categoriesData.map(function (category, i) {
         return _react2.default.createElement(
           'div',
           { className: 'categories', key: i },
           _react2.default.createElement(
             'div',
             { className: 'title' },
-            'Community'
+            category.title
           ),
           _react2.default.createElement(
             'div',
@@ -673,12 +681,28 @@ var Home = function (_Component) {
     };
 
     _this.state = {
-      name: 'Joe'
+      name: 'Joe',
+      categoriesData: _categories2.default
     };
+
     return _this;
   }
 
   _createClass(Home, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var self = this;
+      _axios2.default.get('/api/categories').then(function (response) {
+        self.setState({
+          categoriesData: response.data
+        }, function () {
+          console.log(self.state);
+        });
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -727,7 +751,7 @@ exports.default = Home;
 
 /***/ }),
 
-/***/ 123:
+/***/ 148:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -743,7 +767,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(14);
+var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -969,7 +993,7 @@ exports.default = Listings;
 
 /***/ }),
 
-/***/ 124:
+/***/ 149:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -985,7 +1009,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(14);
+var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -1092,6 +1116,210 @@ var Gallery = function (_Component) {
 
 exports.default = Gallery;
 
+/***/ }),
+
+/***/ 150:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var categories = [{
+  title: "community",
+  listings: [{
+    name: 'activities',
+    slug: 'activities'
+  }, {
+    name: 'artists',
+    slug: 'artists'
+  }, {
+    name: 'childcare',
+    slug: 'childcare'
+  }, {
+    name: 'classes',
+    slug: 'classes'
+  }, {
+    name: 'events',
+    slug: 'events'
+  }, {
+    name: 'general',
+    slug: 'general'
+  }, {
+    name: 'groups',
+    slug: 'groups'
+  }, {
+    name: 'local news',
+    slug: 'local-news'
+  }]
+}, {
+  title: "housing",
+  listings: [{
+    name: 'apts/housing',
+    slug: 'apts-or-housing'
+  }, {
+    name: 'housing swap',
+    slug: 'housing-swap'
+  }, {
+    name: 'housing wanted',
+    slug: 'housing-wanted'
+  }, {
+    name: 'office / commercial',
+    slug: 'office-or-commercial'
+  }, {
+    name: 'parking / storage',
+    slug: 'parking-storage'
+  }, {
+    name: 'real estate for sale',
+    slug: 'real-estate-for-sale'
+  }, {
+    name: 'rooms / shared',
+    slug: 'rooms-or-shared'
+  }, {
+    name: 'rooms wanted',
+    slug: 'rooms-wanted'
+  }]
+}, {
+  title: "jobs",
+  listings: [{
+    name: 'accounting+finance',
+    slug: 'accounting-and-finance'
+  }, {
+    name: 'admin / finance',
+    slug: 'admin-or-finance'
+  }, {
+    name: 'arch / engineering',
+    slug: 'arch-or-engineering'
+  }, {
+    name: 'art / media / design',
+    slug: 'art-media-design'
+  }, {
+    name: 'biotech / science',
+    slug: 'biotech-science'
+  }, {
+    name: 'business / mgmt',
+    slug: 'business-mgmt'
+  }, {
+    name: 'customer service',
+    slug: 'customer-service'
+  }, {
+    name: 'education',
+    slug: 'education'
+  }]
+}, {
+  title: "for-sale",
+  listings: [{
+    name: 'antiques',
+    slug: 'antiques'
+  }, {
+    name: 'appliances',
+    slug: 'appliances'
+  }, {
+    name: 'arts+crafts',
+    slug: 'arts-and-crafts'
+  }, {
+    name: 'auto parts',
+    slug: 'auto-parts'
+  }, {
+    name: 'bikes',
+    slug: 'bikes'
+  }, {
+    name: 'boats',
+    slug: 'boats'
+  }, {
+    name: 'books',
+    slug: 'books'
+  }, {
+    name: 'cars+trucks',
+    slug: 'cars-and-trucks'
+  }]
+}, {
+  title: "discussion-forums",
+  listings: [{
+    name: 'celebs',
+    slug: 'celebs'
+  }, {
+    name: 'comp',
+    slug: 'comp'
+  }, {
+    name: 'crafts',
+    slug: 'crafts'
+  }, {
+    name: 'hats',
+    slug: 'hats'
+  }, {
+    name: 'history',
+    slug: 'history'
+  }, {
+    name: 'housing',
+    slug: 'housing'
+  }, {
+    name: 'jobs',
+    slug: 'jobs'
+  }, {
+    name: 'psych',
+    slug: 'psych'
+  }]
+}, {
+  title: "services",
+  listings: [{
+    name: 'automotive',
+    slug: 'automotive'
+  }, {
+    name: 'beauty',
+    slug: 'beauty'
+  }, {
+    name: 'cell / mobile',
+    slug: 'cell-and-mobile'
+  }, {
+    name: 'computer',
+    slug: 'computer'
+  }, {
+    name: 'creative',
+    slug: 'creative'
+  }, {
+    name: 'cycle',
+    slug: 'cycle'
+  }, {
+    name: 'event',
+    slug: 'event'
+  }, {
+    name: 'lessons',
+    slug: 'lessons'
+  }]
+}, {
+  title: "gigs",
+  listings: [{
+    name: 'computer',
+    slug: 'computer'
+  }, {
+    name: 'creative',
+    slug: 'creative'
+  }, {
+    name: 'crew',
+    slug: 'crew'
+  }, {
+    name: 'domestic',
+    slug: 'domestic'
+  }, {
+    name: 'events',
+    slug: 'events'
+  }, {
+    name: 'labor',
+    slug: 'labor'
+  }, {
+    name: 'talent',
+    slug: 'talent'
+  }, {
+    name: 'writing',
+    slug: 'writing'
+  }]
+}];
+
+exports.default = categories;
+
 /***/ })
 
-},[118]);
+},[143]);

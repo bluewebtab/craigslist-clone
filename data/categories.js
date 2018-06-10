@@ -1,4 +1,4 @@
-module.exports = [
+var categories = [
   {
     title: "community",
     listings: [
@@ -270,3 +270,5 @@ slug: 'writing'
 
 
 ]
+
+export default categories;
