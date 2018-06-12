@@ -639,9 +639,20 @@ var Home = function (_Component) {
 
   _createClass(Home, [{
     key: 'componentWillMount',
-    value: function componentWillMount() {
+    value: function componentWillMount() {}
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _props = this.props,
+          match = _props.match,
+          history = _props.history;
+
+      if (match.params.city == undefined) {
+        history.push('/los-angeles');
+      }
+
       var self = this;
-      _axios2.default.get('/api/categories').then(function (response) {
+      _axios2.default.get('/api/' + match.params.city + '/categories').then(function (response) {
         self.setState({
           categoriesData: response.data
         }, function () {

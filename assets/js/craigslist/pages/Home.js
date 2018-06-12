@@ -14,8 +14,19 @@ export default class Home extends Component {
   }
 
   componentWillMount(){
+    
+
+
+
+  }
+  componentDidMount(){
+    const{match, history} = this.props
+    if(match.params.city == undefined){
+      history.push('/los-angeles')
+    }
+
     const self = this;
-    axios.get('/api/categories').then(function (response){
+    axios.get(`/api/${match.params.city}/categories`).then(function (response){
       self.setState({
         categoriesData: response.data
       }, () =>{
