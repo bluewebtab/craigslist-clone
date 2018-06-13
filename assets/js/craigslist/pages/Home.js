@@ -26,7 +26,7 @@ export default class Home extends Component {
     }
 
     const self = this;
-    axios.get(`/api/${match.params.city}/categories`).then(function (response){
+    axios.get(`/api/${match.params.city}`).then(function (response){
       self.setState({
         categoriesData: response.data
       }, () =>{
@@ -43,6 +43,7 @@ export default class Home extends Component {
     console.log('swag')
   }
   loopCategories = () => {
+    const {match, history} = this.props
     if(this.state.categoriesData != ''){
       return this.state.categoriesData.map((category, i) => {
         const loopListings = () =>{
@@ -58,7 +59,7 @@ export default class Home extends Component {
         return (
           <div className="categories" key = {i} >
           
-            <div className="title">{category.title}</div>
+            <a href={`/${match.params.city}/${category.title}`} className="title">{category.title}</a>
             <div className={`group-links ${(category.title == 'for-sale' || category.title == 'jobs' || category.title == 'housing') ? 'single-col' : ''}`}>
             {loopListings()}
             </div>
@@ -69,7 +70,7 @@ export default class Home extends Component {
       return 'LOADING'
     }
     }
-    
+
 
   loopTags = () => {
     let testTags = ['a', 'b', 'c', 'd','f','g', 'h']

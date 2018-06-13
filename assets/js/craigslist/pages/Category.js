@@ -1,24 +1,180 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import axios from 'axios'
 
 
 export default class Category extends Component {
   constructor() {
     super()
     this.state = {
-      
+       min_price: 1000,
+       max_price: 10000,
+       sort: 'newest',
+       select_view: 'gallery'
     }
   }
 
+  componentWillMount(){
+    const{match, history} = this.props
+
+    const self = this;
+    axios.get(`/api/${match.params.city}/${match.params.category}`).then(function (response){
+      self.setState({
+        itemsData: response.data
+      }, () =>{
+        console.log(self.state);
+
+      })
+      
+    })
+    .catch(function(error){
+      console.log(error);
+    })
+  }
+
+  loopItems = () => {
+
+
+    if(this.state.itemsData != undefined){
+      return this.state.itemsData.map((item, i) => {
+        return (
+          <div className="item" key={i}>
+          <div className = "image" style={{
+            backgroundImage: `url('${item.images[0]}')`
+          }}>
+          <div className="price">
+            ${item.price}
+          </div>
+          
+          </div>
+          <div className="details">
+            <h5>{item.title}
+            <i className="far fa-star"></i>
+            </h5>
+            <h6>{item.city}</h6>
+          </div>
+        </div>
+        )
+      })
+    }
+    
+  }
+
+  showMakeModelDropdown = () =>{
+    const {match, location, history} = this.props
+
+    if(match.params.listings == 'cars-and-trucks'){
+      
+      return(<div className="make-model-comp">
+      <div className="form-group make">
+              <label>Make</label>
+              <select name = "make" className="make" onChange = {this.handleChange}>
+                <option value = "ford">ford</option>
+                <option value = "jeep">jeep</option>
+                <option value = "dodge">dodge</option>
+
+              </select>
+              
+            </div>
+            <div className="form-group model">
+              <label>Model</label>
+              <select name = "model" className="model" onChange = {this.handleChange}>
+                <option value = "focus">focus</option>
+                <option value = "explorer">explorer</option>
+                <option value = "cherokee">cherokee</option>
+                <option value = "challenger">challenger</option>
+
+
+
+  
+              </select>
+              
+            </div>
+      </div>)
+
+    }
+
+    
+  }
+
+
+  handleChange = (event) =>{
+    const name = event.target.name
+    const value = (event.target.type == 'checkbox')? event.target.checked : event.target.value
+
+    this.setState({
+      [name]: value
+    }, ()=>{
+      console.log(this.state)
+    }) 
+  }
   
   render() {
     const{match, location, history} = this.props
     return (
-      <div className = "category">
-        <div className = "container">
-       this category is {match.params.category}
+      <div className = "listings-page">
+      <div className = "container">
+
+        <section id = "filter">
+
+          <div className="form-group price">
+            <label>Price</label>
+            <div className="min-max">
+            <select name = "min_price" className="min-price" onChange = {this.handleChange} value = {this.state.min_price}>
+              <option value = "0">0</option>
+              <option value = "1000">1000</option>
+              <option value = "5000">5000</option>
+
+
+            </select>
+            <select name = "max_price" className="max-price" onChange = {this.handleChange} value = {this.state.max_price}>
+            <option value = "1000">1000</option>
+              <option value = "5000">5000</option>
+              <option value = "10000">10000</option>
+
+            </select>
+              </div>
+          </div>
+          {this.showMakeModelDropdown()}
+          <div className="form-group button">
+           <div className="primary-btn">Update</div>
+           <div className="reset-btn">Reset</div>
+
+          </div>
+        </section>
         </div>
-      </div>
+        <section id="list-view">
+          <div className = "container">
+          <div className = "white-box">
+          <section className="change-view">
+          <div className="form-group view-dropdown">
+            <select name = "select_view" className="select-view" onChange = {this.handleChange} value = {this.state.select_view}>
+              <option value = "gallery">Gallery view</option>
+              <option value = "list">List view</option>
+              <option value = "thumb">Thumb view</option>
+
+
+            </select>
+            
+          </div>
+          <div className="form-group sort-dropdown">
+            <select name = "sort" className="sort-dropdown" onChange = {this.handleChange} value = {this.state.sort}>
+              <option value = "newest">Newest</option>
+              <option value = "oldest">Oldest</option>
+
+              </select>
+            
+          </div>
+          </section>
+          <section className="all-items">
+            {this.loopItems()}
+           
+          </section>
+          </div>
+          </div>
+        </section>
+        </div>      
+      
     )
   }
 }

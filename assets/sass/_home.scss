@@ -15,10 +15,13 @@
       margin-bottom: 70px;
       .categories{
         .title{
+          display:block;
           font-size: 1.3rem;
           color:white;
           margin-bottom: 1rem;
           font-weight: 700;
+          text-decoration:none;
+
         }
         .group-links{
             display:grid;

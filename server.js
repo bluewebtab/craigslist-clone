@@ -14,14 +14,26 @@ const app = express();
 app.use("/", serveStatic(path.join(__dirname, "/public")));
 
 //api
+//shows all the cities available
 app.get('/api/cities', function(req, res){
   res.json(citiesData)
 })
-
-app.get('/api/:city/:categories', function(req, res){
+//shwos all the categories available
+app.get('/api/:city', function(req, res){
   res.json(categoriesData)
 })
-
+//This is going to show all the items for that category
+app.get('/api/:city/:category', function(req, res){
+  const newData = itemsData.filter((item)=>{
+    return item.city == req.params.city && item.category == req.params.category
+  })
+  res.json(newData)
+})
+//show all the items for that listing
+app.get('/api/:city/:categories/:listing', function(req, res){
+  res.json(itemsData)
+})
+//show the item that was selected
 app.get('/api/:city/:categories/:listing/:item', function(req, res){
   res.json(itemsData)
 })
