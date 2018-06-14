@@ -36,10 +36,16 @@ header{
   .left-menu{
     display:flex;
     .logo{
+      color:#fff;
+      text-decoration:none;
       font-size: 2rem;
       display:flex;
       justify-content: center;
       align-items:center;
+
+      &:hover{
+        color:rgb(228, 226, 226);
+      }
     }
     .city-dropdown{
       display:flex;

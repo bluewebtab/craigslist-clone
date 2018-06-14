@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
-
+import {Link} from 'react-router-dom'
 
 export default class Header extends Component {
   constructor() {
@@ -61,12 +61,14 @@ export default class Header extends Component {
   }
 
   render() {
+    const {match, history} = this.props
+
     return (
       <div className="container">
 
       <header>
           <div className={'left-menu'}>
-            <div className={'logo'}>Ronnyslist</div>
+            <Link className={'logo'} to={`/${match.params.city}`} >Ronny'slist</Link>
             <div className={'city-dropdown'} onClick = {this.clickedCityDropdown}>{this.state.selectedCity}
             <i className={`fas fa-caret-down ${(this.state.cityDropdown) ? 'fas fa-caret-up': 'fas fa-caret-down'}`}></i>
             <div className = {`scroll-area ${(this.state.cityDropdown) ? 'active': ''}`}>
@@ -81,7 +83,7 @@ export default class Header extends Component {
           </div>
 
           <div className={'right-menu'}>
-            <div className={'user-img'}>img</div>
+            <div className={'user-img'}><i className="fas fa-user-circle"></i></div>
             <div className={'user-dropdown'}>my account
             <i className={`fas fa-caret-down`}></i>
             </div>

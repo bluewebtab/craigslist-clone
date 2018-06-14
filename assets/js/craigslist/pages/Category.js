@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
+import qs from 'query-string'
 
 
 export default class Category extends Component {
   constructor() {
     super()
     this.state = {
-       min_price: 1000,
+       min_price:0,
        max_price: 10000,
        sort: 'newest',
        select_view: 'gallery'
@@ -16,20 +17,39 @@ export default class Category extends Component {
 
   componentWillMount(){
     const{match, history} = this.props
-
+    console.log(match.params.category)
     const self = this;
-    axios.get(`/api/${match.params.city}/${match.params.category}`).then(function (response){
-      self.setState({
-        itemsData: response.data
-      }, () =>{
-        console.log(self.state);
-
+    
+  
+   const queryParams = qs.parse(this.props.location.search)
+   const {min_price, max_price, sort, select_view} = queryParams
+    if(queryParams.min_price != undefined){
+      axios.get(`/api/${match.params.city}/${match.params.category}?min_price=${min_price}&max_price=${max_price}&sort=${sort}&select_view=${select_view}`).then(function (response){
+        self.setState({
+          itemsData: response.data
+        }, () =>{
+          console.log(self.state);
+  
+        })
+        
       })
-      
-    })
-    .catch(function(error){
-      console.log(error);
-    })
+      .catch(function(error){
+        console.log(error);
+      })
+    }else{
+      axios.get(`/api/${match.params.city}/${match.params.category}`).then(function (response){
+        self.setState({
+          itemsData: response.data
+        }, () =>{
+          console.log(self.state);
+  
+        })
+        
+      })
+      .catch(function(error){
+        console.log(error);
+      })
+    }
   }
 
   loopItems = () => {
@@ -108,6 +128,17 @@ export default class Category extends Component {
       console.log(this.state)
     }) 
   }
+
+  submitFilters = () =>{
+    const self = this;
+    const {match, location, history} = this.props
+    const{min_price, max_price, sort, select_view} = this.state
+  
+    document.location.href = `/${match.params.city}/${match.params.category}?min_price=${min_price}&max_price=${max_price}&sort=${sort}&select_view=${select_view}`
+
+    const queryParams = qs.parse(this.props.location.search)
+
+  }
   
   render() {
     const{match, location, history} = this.props
@@ -122,22 +153,44 @@ export default class Category extends Component {
             <div className="min-max">
             <select name = "min_price" className="min-price" onChange = {this.handleChange} value = {this.state.min_price}>
               <option value = "0">0</option>
-              <option value = "1000">1000</option>
               <option value = "5000">5000</option>
+              <option value = "10000">10000</option>
+              <option value = "20000">20000</option>
+              <option value = "30000">30000</option>
+              <option value = "40000">40000</option>
+              <option value = "50000">50000</option>
+
+              
+              
+
+
+
+
 
 
             </select>
             <select name = "max_price" className="max-price" onChange = {this.handleChange} value = {this.state.max_price}>
-            <option value = "1000">1000</option>
-              <option value = "5000">5000</option>
+            
               <option value = "10000">10000</option>
+              <option value = "20000">20000</option>
+              <option value = "30000">30000</option>
+              <option value = "40000">40000</option>
+              <option value = "50000">50000</option>
+              <option value = "60000">60000</option>
+              <option value = "70000">70000</option>
+
+
+
+              
+
+
 
             </select>
               </div>
           </div>
           {this.showMakeModelDropdown()}
           <div className="form-group button">
-           <div className="primary-btn">Update</div>
+           <div className="primary-btn" onClick = {this.submitFilters}>Update</div>
            <div className="reset-btn">Reset</div>
 
           </div>

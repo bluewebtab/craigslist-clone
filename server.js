@@ -24,9 +24,18 @@ app.get('/api/:city', function(req, res){
 })
 //This is going to show all the items for that category
 app.get('/api/:city/:category', function(req, res){
-  const newData = itemsData.filter((item)=>{
-    return item.city == req.params.city && item.category == req.params.category
-  })
+    let newData;
+  if(req.query.min_price != undefined){
+    newData = itemsData.filter((item)=>{
+      return item.city == req.params.city && item.category == req.params.category && item.price >= req.query.min_price && item.price <= req.query.max_price
+    })
+    }else{
+     newData = itemsData.filter((item)=>{
+      return item.city == req.params.city && item.category == req.params.category
+    })
+    }
+ 
+  
   res.json(newData)
 })
 //show all the items for that listing
