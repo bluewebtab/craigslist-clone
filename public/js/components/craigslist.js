@@ -58,10 +58,6 @@ var App = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
-    _this.clickedBtn = function () {
-      console.log('swag');
-    };
-
     _this.state = {
       name: 'Joe'
     };
@@ -1021,10 +1017,6 @@ var Home = function (_Component) {
     _classCallCheck(this, Home);
 
     var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
-
-    _this.clickedBtn = function () {
-      console.log('swag');
-    };
 
     _this.loopCategories = function () {
       var _this$props = _this.props,

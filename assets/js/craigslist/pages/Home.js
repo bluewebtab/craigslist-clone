@@ -40,9 +40,7 @@ export default class Home extends Component {
       console.log(error);
     })
   }
-  clickedBtn = () => {
-    console.log('swag')
-  }
+ 
   loopCategories = () => {
     const {match, history} = this.props
     if(this.state.categoriesData != ''){

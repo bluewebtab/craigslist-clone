@@ -25,9 +25,7 @@ export default class App extends Component {
       name: 'Joe'
     }
   }
-  clickedBtn = () => {
-    console.log('swag')
-  }
+  
   render () {
     return (
     <Router>
