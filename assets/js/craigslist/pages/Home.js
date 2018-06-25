@@ -8,7 +8,7 @@ export default class Home extends Component {
   constructor() {
     super()
     this.state = {
-      name: 'Joe',
+      name: 'Ronny',
       categoriesData: ''
     }
     
