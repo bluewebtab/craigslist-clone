@@ -1066,7 +1066,7 @@ var Home = function (_Component) {
     };
 
     _this.state = {
-      name: 'Joe',
+      name: 'Ronny',
       categoriesData: ''
     };
 
