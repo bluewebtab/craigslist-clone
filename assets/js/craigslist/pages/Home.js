@@ -82,6 +82,7 @@ export default class Home extends Component {
   render() {
     return (
       <div className = "home">
+      {console.log(this.props)}
       <div className = "container">
         <h1>Connecting People <br /> Everywhere</h1>
         <section className={'links'}>

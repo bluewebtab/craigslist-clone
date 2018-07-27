@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: 'Ford Focus',
+    title: 'Ford-Focus',
     listing: 'cars-and-trucks',
     city: 'nyc',
     category: 'for-sale',
@@ -22,7 +22,7 @@ module.exports = [
   },
 
   {
-    title: 'Ford Explorer',
+    title: 'Ford-Explorer',
     listing: 'cars-and-trucks',
     city: 'los-angeles',
     category: 'for-sale',
@@ -44,7 +44,7 @@ module.exports = [
     ]
   },
   {
-    title: 'Jeep Grand Cherokee',
+    title: 'Jeep-Grand-Cherokee',
     listing: 'cars-and-trucks',
     city: 'los-angeles',
     category: 'for-sale',
@@ -66,7 +66,7 @@ module.exports = [
     ]
   },
   {
-    title: 'Dodge Challenger',
+    title: 'Dodge-Challenger',
     listing: 'cars-and-trucks',
     city: 'nyc',
     category: 'for-sale',

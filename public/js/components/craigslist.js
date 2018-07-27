@@ -20,7 +20,7 @@ var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(66);
+var _reactRouterDom = __webpack_require__(41);
 
 var _Header = __webpack_require__(145);
 
@@ -137,11 +137,11 @@ var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _axios = __webpack_require__(41);
+var _axios = __webpack_require__(32);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _reactRouterDom = __webpack_require__(66);
+var _reactRouterDom = __webpack_require__(41);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -311,13 +311,15 @@ var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _axios = __webpack_require__(41);
+var _axios = __webpack_require__(32);
 
 var _axios2 = _interopRequireDefault(_axios);
 
 var _queryString = __webpack_require__(187);
 
 var _queryString2 = _interopRequireDefault(_queryString);
+
+var _reactRouterDom = __webpack_require__(41);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -327,7 +329,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //This is categories for cars and trucks
 
 var Category = function (_Component) {
   _inherits(Category, _Component);
@@ -338,6 +340,9 @@ var Category = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Category.__proto__ || Object.getPrototypeOf(Category)).call(this));
 
     _this.loopItems = function () {
+      var _this$props = _this.props,
+          match = _this$props.match,
+          history = _this$props.history;
 
       if (_this.state.itemsData != undefined) {
         return _this.state.itemsData.map(function (item, i) {
@@ -345,30 +350,36 @@ var Category = function (_Component) {
             'div',
             { className: 'item', key: i },
             _react2.default.createElement(
-              'div',
-              { className: 'image', style: {
-                  backgroundImage: 'url(\'' + item.images[0] + '\')'
-                } },
+              _reactRouterDom.Link,
+              { to: item.listing + '/' + item.title },
               _react2.default.createElement(
                 'div',
-                { className: 'price' },
-                '$',
-                item.price
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'details' },
-              _react2.default.createElement(
-                'h5',
-                null,
-                item.title,
-                _react2.default.createElement('i', { className: 'far fa-star' })
+                {
+
+                  className: 'image', style: {
+                    backgroundImage: 'url(\'' + item.images[0] + '\')'
+                  } },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'price' },
+                  '$',
+                  item.price
+                )
               ),
               _react2.default.createElement(
-                'h6',
-                null,
-                item.city
+                'div',
+                { className: 'details' },
+                _react2.default.createElement(
+                  'h5',
+                  null,
+                  item.title,
+                  _react2.default.createElement('i', { className: 'far fa-star' })
+                ),
+                _react2.default.createElement(
+                  'h6',
+                  null,
+                  item.city
+                )
               )
             )
           );
@@ -377,10 +388,10 @@ var Category = function (_Component) {
     };
 
     _this.showMakeModelDropdown = function () {
-      var _this$props = _this.props,
-          match = _this$props.match,
-          location = _this$props.location,
-          history = _this$props.history;
+      var _this$props2 = _this.props,
+          match = _this$props2.match,
+          location = _this$props2.location,
+          history = _this$props2.history;
 
 
       if (match.params.listings == 'cars-and-trucks') {
@@ -464,10 +475,10 @@ var Category = function (_Component) {
 
     _this.submitFilters = function () {
       var self = _this;
-      var _this$props2 = _this.props,
-          match = _this$props2.match,
-          location = _this$props2.location,
-          history = _this$props2.history;
+      var _this$props3 = _this.props,
+          match = _this$props3.match,
+          location = _this$props3.location,
+          history = _this$props3.history;
       var _this$state = _this.state,
           min_price = _this$state.min_price,
           max_price = _this$state.max_price,
@@ -534,6 +545,7 @@ var Category = function (_Component) {
           match = _props2.match,
           location = _props2.location,
           history = _props2.history;
+
 
       return _react2.default.createElement(
         'div',
@@ -709,6 +721,7 @@ var Category = function (_Component) {
               _react2.default.createElement(
                 'section',
                 { className: 'all-items' },
+                console.log(match.params),
                 this.loopItems()
               )
             )
@@ -749,13 +762,18 @@ var _Gallery = __webpack_require__(150);
 
 var _Gallery2 = _interopRequireDefault(_Gallery);
 
+var _axios = __webpack_require__(32);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //This is after you pick a car from categories.js
+
 
 var Details = function (_Component) {
   _inherits(Details, _Component);
@@ -765,206 +783,355 @@ var Details = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Details.__proto__ || Object.getPrototypeOf(Details)).call(this));
 
+    _this.getItem = function () {
+      var _this$props = _this.props,
+          match = _this$props.match,
+          history = _this$props.history;
+
+      if (_this.state.itemsData != undefined) {
+        var carOne = _this.state.itemsData[0];
+        var carTwo = _this.state.itemsData[1];
+        if (match.params.details === carOne.title) {
+
+          return _react2.default.createElement(
+            'div',
+            { className: 'details-page' },
+            _react2.default.createElement(
+              'div',
+              { className: 'container' },
+              _react2.default.createElement(
+                'div',
+                { className: 'white-box' },
+                _react2.default.createElement(
+                  'section',
+                  { className: 'submenu' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'direction' },
+                    _react2.default.createElement(
+                      'a',
+                      { href: '#', className: 'prev' },
+                      'Prev'
+                    ),
+                    _react2.default.createElement(
+                      'a',
+                      { href: '#', className: 'next' },
+                      'Next'
+                    )
+                  ),
+                  console.log(match.params),
+                  _react2.default.createElement(
+                    'nav',
+                    { className: 'sub-links' },
+                    _react2.default.createElement(
+                      'a',
+                      { href: '#' },
+                      'More Ads by User'
+                    ),
+                    _react2.default.createElement(
+                      'a',
+                      { href: '#' },
+                      'Print'
+                    ),
+                    _react2.default.createElement(
+                      'a',
+                      { href: '#' },
+                      'Share'
+                    ),
+                    _react2.default.createElement(
+                      'a',
+                      { href: '#' },
+                      'Contact Seller'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'section',
+                  { className: 'content-area' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'media-column' },
+                    _react2.default.createElement(_Gallery2.default, null)
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'details-column' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'date' },
+                      'Posted: June 6th'
+                    ),
+                    _react2.default.createElement(
+                      'h3',
+                      { className: 'title' },
+                      carOne.title
+                    ),
+                    _react2.default.createElement(
+                      'h4',
+                      { className: 'price' },
+                      carOne.price
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'more-details' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'info' },
+                        _react2.default.createElement(
+                          'label',
+                          null,
+                          'VIN'
+                        ),
+                        _react2.default.createElement(
+                          'h5',
+                          null,
+                          carOne.extraDetails.vin
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'info' },
+                        _react2.default.createElement(
+                          'label',
+                          null,
+                          'Mileage'
+                        ),
+                        _react2.default.createElement(
+                          'h5',
+                          null,
+                          carOne.extraDetails.miles
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'info' },
+                        _react2.default.createElement(
+                          'label',
+                          null,
+                          'Transmission'
+                        ),
+                        _react2.default.createElement(
+                          'h5',
+                          null,
+                          carOne.extraDetails.transmission
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'description' },
+                      _react2.default.createElement(
+                        'label',
+                        null,
+                        'Description'
+                      ),
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        'Lorem ipsum dolor amet vHS neutra unicorn marfa lomo crucifix tousled selfies palo santo. Banjo ugh health goth master cleanse put a bird on it paleo poke actually ennui franzen jean shorts pitchfork vice pop-up yr. Raclette blue bottle man bun biodiesel edison bulb. Distillery vexillologist franzen pug pop-up, blog mumblecore adaptogen meggings glossier ethical unicorn. Cliche godard coloring book hella, hell of seitan keffiyeh pok pok gluten-free butcher hammock echo park food truck blue bottle. Direct trade ennui cloud bread pour-over, offal kogi ramps humblebrag. Vexillologist everyday carry tumeric chicharrones narwhal dreamcatcher, farm-to-table migas artisan poutine kitsch hexagon gluten-free wolf keffiyeh.'
+                      ),
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        'Lorem ipsum dolor amet vHS neutra unicorn marfa lomo crucifix tousled selfies palo santo. Banjo ugh health goth master cleanse put a bird on it paleo poke actually ennui franzen jean shorts pitchfork vice pop-up yr. Raclette blue bottle man bun biodiesel edison bulb. Distillery vexillologist franzen pug pop-up, blog mumblecore adaptogen meggings glossier ethical unicorn. Cliche godard coloring book hella, hell of seitan keffiyeh pok pok gluten-free butcher hammock echo park food truck blue bottle. Direct trade ennui cloud bread pour-over, offal kogi ramps humblebrag. Vexillologist everyday carry tumeric chicharrones narwhal dreamcatcher, farm-to-table migas artisan poutine kitsch hexagon gluten-free wolf keffiyeh.'
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          );
+        } else {
+          if (match.params.details === carTwo.title) {
+
+            return _react2.default.createElement(
+              'div',
+              { className: 'details-page' },
+              _react2.default.createElement(
+                'div',
+                { className: 'container' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'white-box' },
+                  _react2.default.createElement(
+                    'section',
+                    { className: 'submenu' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'direction' },
+                      _react2.default.createElement(
+                        'a',
+                        { href: '#', className: 'prev' },
+                        'Prev'
+                      ),
+                      _react2.default.createElement(
+                        'a',
+                        { href: '#', className: 'next' },
+                        'Next'
+                      )
+                    ),
+                    console.log(match.params),
+                    _react2.default.createElement(
+                      'nav',
+                      { className: 'sub-links' },
+                      _react2.default.createElement(
+                        'a',
+                        { href: '#' },
+                        'More Ads by User'
+                      ),
+                      _react2.default.createElement(
+                        'a',
+                        { href: '#' },
+                        'Print'
+                      ),
+                      _react2.default.createElement(
+                        'a',
+                        { href: '#' },
+                        'Share'
+                      ),
+                      _react2.default.createElement(
+                        'a',
+                        { href: '#' },
+                        'Contact Seller'
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'section',
+                    { className: 'content-area' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'media-column' },
+                      _react2.default.createElement(_Gallery2.default, null)
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'details-column' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'date' },
+                        'Posted: June 6th'
+                      ),
+                      _react2.default.createElement(
+                        'h3',
+                        { className: 'title' },
+                        carTwo.title
+                      ),
+                      _react2.default.createElement(
+                        'h4',
+                        { className: 'price' },
+                        carTwo.price
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'more-details' },
+                        _react2.default.createElement(
+                          'div',
+                          { className: 'info' },
+                          _react2.default.createElement(
+                            'label',
+                            null,
+                            'VIN'
+                          ),
+                          _react2.default.createElement(
+                            'h5',
+                            null,
+                            carTwo.extraDetails.vin
+                          )
+                        ),
+                        _react2.default.createElement(
+                          'div',
+                          { className: 'info' },
+                          _react2.default.createElement(
+                            'label',
+                            null,
+                            'Mileage'
+                          ),
+                          _react2.default.createElement(
+                            'h5',
+                            null,
+                            carTwo.extraDetails.miles
+                          )
+                        ),
+                        _react2.default.createElement(
+                          'div',
+                          { className: 'info' },
+                          _react2.default.createElement(
+                            'label',
+                            null,
+                            'Transmission'
+                          ),
+                          _react2.default.createElement(
+                            'h5',
+                            null,
+                            carTwo.extraDetails.transmission
+                          )
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'description' },
+                        _react2.default.createElement(
+                          'label',
+                          null,
+                          'Description'
+                        ),
+                        _react2.default.createElement(
+                          'p',
+                          null,
+                          'Lorem ipsum dolor amet vHS neutra unicorn marfa lomo crucifix tousled selfies palo santo. Banjo ugh health goth master cleanse put a bird on it paleo poke actually ennui franzen jean shorts pitchfork vice pop-up yr. Raclette blue bottle man bun biodiesel edison bulb. Distillery vexillologist franzen pug pop-up, blog mumblecore adaptogen meggings glossier ethical unicorn. Cliche godard coloring book hella, hell of seitan keffiyeh pok pok gluten-free butcher hammock echo park food truck blue bottle. Direct trade ennui cloud bread pour-over, offal kogi ramps humblebrag. Vexillologist everyday carry tumeric chicharrones narwhal dreamcatcher, farm-to-table migas artisan poutine kitsch hexagon gluten-free wolf keffiyeh.'
+                        ),
+                        _react2.default.createElement(
+                          'p',
+                          null,
+                          'Lorem ipsum dolor amet vHS neutra unicorn marfa lomo crucifix tousled selfies palo santo. Banjo ugh health goth master cleanse put a bird on it paleo poke actually ennui franzen jean shorts pitchfork vice pop-up yr. Raclette blue bottle man bun biodiesel edison bulb. Distillery vexillologist franzen pug pop-up, blog mumblecore adaptogen meggings glossier ethical unicorn. Cliche godard coloring book hella, hell of seitan keffiyeh pok pok gluten-free butcher hammock echo park food truck blue bottle. Direct trade ennui cloud bread pour-over, offal kogi ramps humblebrag. Vexillologist everyday carry tumeric chicharrones narwhal dreamcatcher, farm-to-table migas artisan poutine kitsch hexagon gluten-free wolf keffiyeh.'
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            );
+          }
+        }
+      }
+    };
+
     _this.state = {};
     return _this;
   }
 
   _createClass(Details, [{
-    key: 'render',
-    value: function render() {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
       var _props = this.props,
           match = _props.match,
-          location = _props.location,
           history = _props.history;
 
+      var self = this;
+      _axios2.default.get('/api/' + match.params.city + '/' + match.params.category).then(function (response) {
+        self.setState({
+          itemsData: response.data
+        }, function () {
+          console.log(self.state);
+        });
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props2 = this.props,
+          match = _props2.match,
+          location = _props2.location,
+          history = _props2.history;
+
+      var items = this.state.itemsData;
       return _react2.default.createElement(
         'div',
         { className: 'details-page' },
-        _react2.default.createElement(
-          'div',
-          { className: 'container' },
-          _react2.default.createElement(
-            'div',
-            { className: 'white-box' },
-            _react2.default.createElement(
-              'section',
-              { className: 'submenu' },
-              _react2.default.createElement(
-                'div',
-                { className: 'direction' },
-                _react2.default.createElement(
-                  'a',
-                  { href: '#', className: 'prev' },
-                  'Prev'
-                ),
-                _react2.default.createElement(
-                  'a',
-                  { href: '#', className: 'next' },
-                  'Next'
-                )
-              ),
-              _react2.default.createElement(
-                'nav',
-                { className: 'sub-links' },
-                _react2.default.createElement(
-                  'a',
-                  { href: '#' },
-                  'More Ads by User'
-                ),
-                _react2.default.createElement(
-                  'a',
-                  { href: '#' },
-                  'Print'
-                ),
-                _react2.default.createElement(
-                  'a',
-                  { href: '#' },
-                  'Share'
-                ),
-                _react2.default.createElement(
-                  'a',
-                  { href: '#' },
-                  'Contact Seller'
-                )
-              )
-            ),
-            _react2.default.createElement(
-              'section',
-              { className: 'content-area' },
-              _react2.default.createElement(
-                'div',
-                { className: 'media-column' },
-                _react2.default.createElement(_Gallery2.default, null)
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'details-column' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'date' },
-                  'Posted: June 6th'
-                ),
-                _react2.default.createElement(
-                  'h3',
-                  { className: 'title' },
-                  ' Dodge Challenger'
-                ),
-                _react2.default.createElement(
-                  'h4',
-                  { className: 'price' },
-                  ' $20,000'
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'more-details' },
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'info' },
-                    _react2.default.createElement(
-                      'label',
-                      null,
-                      'VIN'
-                    ),
-                    _react2.default.createElement(
-                      'h5',
-                      null,
-                      'WYYUHK756GHBB89CHJ'
-                    )
-                  ),
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'info' },
-                    _react2.default.createElement(
-                      'label',
-                      null,
-                      'Mileage'
-                    ),
-                    _react2.default.createElement(
-                      'h5',
-                      null,
-                      '4567'
-                    )
-                  ),
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'info' },
-                    _react2.default.createElement(
-                      'label',
-                      null,
-                      'Transmission'
-                    ),
-                    _react2.default.createElement(
-                      'h5',
-                      null,
-                      'Manual'
-                    )
-                  ),
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'info' },
-                    _react2.default.createElement(
-                      'label',
-                      null,
-                      'VIN'
-                    ),
-                    _react2.default.createElement(
-                      'h5',
-                      null,
-                      'WYYUHK756GHBB89CHJ'
-                    )
-                  ),
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'info' },
-                    _react2.default.createElement(
-                      'label',
-                      null,
-                      'Mileage'
-                    ),
-                    _react2.default.createElement(
-                      'h5',
-                      null,
-                      '4567'
-                    )
-                  ),
-                  _react2.default.createElement(
-                    'div',
-                    { className: 'info' },
-                    _react2.default.createElement(
-                      'label',
-                      null,
-                      'Transmission'
-                    ),
-                    _react2.default.createElement(
-                      'h5',
-                      null,
-                      'Manual'
-                    )
-                  )
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'description' },
-                  _react2.default.createElement(
-                    'label',
-                    null,
-                    'Description'
-                  ),
-                  _react2.default.createElement(
-                    'p',
-                    null,
-                    'Lorem ipsum dolor amet vHS neutra unicorn marfa lomo crucifix tousled selfies palo santo. Banjo ugh health goth master cleanse put a bird on it paleo poke actually ennui franzen jean shorts pitchfork vice pop-up yr. Raclette blue bottle man bun biodiesel edison bulb. Distillery vexillologist franzen pug pop-up, blog mumblecore adaptogen meggings glossier ethical unicorn. Cliche godard coloring book hella, hell of seitan keffiyeh pok pok gluten-free butcher hammock echo park food truck blue bottle. Direct trade ennui cloud bread pour-over, offal kogi ramps humblebrag. Vexillologist everyday carry tumeric chicharrones narwhal dreamcatcher, farm-to-table migas artisan poutine kitsch hexagon gluten-free wolf keffiyeh.'
-                  ),
-                  _react2.default.createElement(
-                    'p',
-                    null,
-                    'Lorem ipsum dolor amet vHS neutra unicorn marfa lomo crucifix tousled selfies palo santo. Banjo ugh health goth master cleanse put a bird on it paleo poke actually ennui franzen jean shorts pitchfork vice pop-up yr. Raclette blue bottle man bun biodiesel edison bulb. Distillery vexillologist franzen pug pop-up, blog mumblecore adaptogen meggings glossier ethical unicorn. Cliche godard coloring book hella, hell of seitan keffiyeh pok pok gluten-free butcher hammock echo park food truck blue bottle. Direct trade ennui cloud bread pour-over, offal kogi ramps humblebrag. Vexillologist everyday carry tumeric chicharrones narwhal dreamcatcher, farm-to-table migas artisan poutine kitsch hexagon gluten-free wolf keffiyeh.'
-                  )
-                )
-              )
-            )
-          )
-        )
+        this.getItem()
       );
     }
   }]);
@@ -996,9 +1163,9 @@ var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(66);
+var _reactRouterDom = __webpack_require__(41);
 
-var _axios = __webpack_require__(41);
+var _axios = __webpack_require__(32);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -1104,6 +1271,7 @@ var Home = function (_Component) {
       return _react2.default.createElement(
         'div',
         { className: 'home' },
+        console.log(this.props),
         _react2.default.createElement(
           'div',
           { className: 'container' },

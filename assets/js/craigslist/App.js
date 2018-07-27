@@ -38,7 +38,7 @@ export default class App extends Component {
 
       <Route exact path = "/:city/:category" component = {Category} />
       <Route exact path = "/:city/:category/:listings" component = {Category} />
-
+      
       <Route exact path = "/:city/:category/:listings/:details" component = {Details} />
 
 

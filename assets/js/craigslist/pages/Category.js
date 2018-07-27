@@ -1,7 +1,11 @@
+//This is categories for cars and trucks
+
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
 import qs from 'query-string'
+import {Link} from 'react-router-dom'
+
 
 
 export default class Category extends Component {
@@ -20,7 +24,6 @@ export default class Category extends Component {
     console.log(match.params.category)
     const self = this;
     
-  
    const queryParams = qs.parse(this.props.location.search)
    const {min_price, max_price, sort, select_view} = queryParams
     if(queryParams.min_price != undefined){
@@ -53,13 +56,15 @@ export default class Category extends Component {
   }
 
   loopItems = () => {
-
-
+    const {match, history} = this.props
     if(this.state.itemsData != undefined){
       return this.state.itemsData.map((item, i) => {
         return (
           <div className="item" key={i}>
-          <div className = "image" style={{
+          <Link to = {`${item.listing}/${item.title}`}>
+          <div
+          
+          className = "image" style={{
             backgroundImage: `url('${item.images[0]}')`
           }}>
           <div className="price">
@@ -73,6 +78,7 @@ export default class Category extends Component {
             </h5>
             <h6>{item.city}</h6>
           </div>
+          </Link>
         </div>
         )
       })
@@ -142,6 +148,7 @@ export default class Category extends Component {
   
   render() {
     const{match, location, history} = this.props
+    
     return (
       <div className = "listings-page">
       <div className = "container">
@@ -220,8 +227,10 @@ export default class Category extends Component {
           </div>
           </section>
           <section className="all-items">
-            {this.loopItems()}
-           
+          
+          {console.log(match.params)}
+          {this.loopItems()} 
+          
           </section>
           </div>
           </div>
