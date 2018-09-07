@@ -68,7 +68,7 @@ export default class Header extends Component {
 
       <header>
           <div className={'left-menu'}>
-            <Link className={'logo'} to={`/${match.params.city}`} >Ronny'slist</Link>
+            <Link className={'logo'} to={`/${match.params.city}`} >Variety Vehicles</Link>
             <div className={'city-dropdown'} onClick = {this.clickedCityDropdown}>{this.state.selectedCity}
             <i className={`fas fa-caret-down ${(this.state.cityDropdown) ? 'fas fa-caret-up': 'fas fa-caret-down'}`}></i>
             <div className = {`scroll-area ${(this.state.cityDropdown) ? 'active': ''}`}>

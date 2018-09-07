@@ -15,19 +15,23 @@ export default class Category extends Component {
        min_price:0,
        max_price: 10000,
        sort: 'newest',
-       select_view: 'gallery'
+       select_view: 'gallery',
+       make: 'ford',
+       model: 'focus'
     }
   }
 
   componentWillMount(){
+    console.log(this.state)
     const{match, history} = this.props
     console.log(match.params.category)
     const self = this;
+    console.log(self.state.make)
     
    const queryParams = qs.parse(this.props.location.search)
-   const {min_price, max_price, sort, select_view} = queryParams
+   const {min_price, max_price, sort, select_view, make, model} = queryParams
     if(queryParams.min_price != undefined){
-      axios.get(`/api/${match.params.city}/${match.params.category}?min_price=${min_price}&max_price=${max_price}&sort=${sort}&select_view=${select_view}`).then(function (response){
+      axios.get(`/api/${match.params.city}/${match.params.category}?min_price=${min_price}&max_price=${max_price}&sort=${sort}&select_view=${select_view}&make=${make}&model=${model}`).then(function (response){
         self.setState({
           itemsData: response.data
         }, () =>{
@@ -94,21 +98,35 @@ export default class Category extends Component {
       return(<div className="make-model-comp">
       <div className="form-group make">
               <label>Make</label>
-              <select name = "make" className="make" onChange = {this.handleChange}>
+              <select name = "make" className="make" onChange = {this.handleChange} value = {this.state.make}>
                 <option value = "ford">ford</option>
                 <option value = "jeep">jeep</option>
                 <option value = "dodge">dodge</option>
+                <option value = "bmw">bmw</option>
+                <option value = "acura">acura</option>
+                <option value = "chevy">chevy</option>
+                <option value = "infiniti">infiniti</option>
+
+
+
+
 
               </select>
               
             </div>
             <div className="form-group model">
               <label>Model</label>
-              <select name = "model" className="model" onChange = {this.handleChange}>
+              <select name = "model" className="model" onChange = {this.handleChange} value = {this.state.model}>
                 <option value = "focus">focus</option>
                 <option value = "explorer">explorer</option>
                 <option value = "cherokee">cherokee</option>
                 <option value = "challenger">challenger</option>
+                <option value = "328I">328I</option>
+                <option value = "cruz">cruz</option>
+                <option value = "MDX">MDX</option>
+                <option value = "Q70">Q70</option>
+
+
 
 
 
@@ -138,9 +156,9 @@ export default class Category extends Component {
   submitFilters = () =>{
     const self = this;
     const {match, location, history} = this.props
-    const{min_price, max_price, sort, select_view} = this.state
-  
-    document.location.href = `/${match.params.city}/${match.params.category}?min_price=${min_price}&max_price=${max_price}&sort=${sort}&select_view=${select_view}`
+    const{min_price, max_price, sort, select_view, make, model} = this.state
+    
+    document.location.href = `/${match.params.city}/${match.params.category}/${match.params.listings}?min_price=${min_price}&max_price=${max_price}&sort=${sort}&select_view=${select_view}&make=${make}&model=${model}`
 
     const queryParams = qs.parse(this.props.location.search)
 
@@ -235,8 +253,7 @@ export default class Category extends Component {
           </div>
           </div>
         </section>
-        </div>      
-      
+        </div>        
     )
   }
 }

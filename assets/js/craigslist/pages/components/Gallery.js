@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import axios from 'axios'
+
+
 
 
 export default class Gallery extends Component {
@@ -11,21 +14,33 @@ export default class Gallery extends Component {
       currentIndex: 0
     }
   }
+
+ 
+
+
+
+
+    
+  
   componentWillMount(){
-    const allImgs =['https://images.craigslist.org/00I0I_fA6pqL5Xh3h_600x450.jpg',
-    'https://images.craigslist.org/00W0W_jM9u9Fg2HfB_600x450.jpg',
-    'https://images.craigslist.org/00I0I_gg4oMQaH7zt_600x450.jpg',
-    'https://images.craigslist.org/00x0x_hByB2A3KRP6_600x450.jpg',
-    'https://images.craigslist.org/00s0s_aRlNEFmxDzY_600x450.jpg',
-    'https://images.craigslist.org/00k0k_8rDbQqgbekx_600x450.jpg'
-    ]
+    // const allImgs =['https://images.craigslist.org/00I0I_fA6pqL5Xh3h_600x450.jpg',
+    // 'https://images.craigslist.org/00W0W_jM9u9Fg2HfB_600x450.jpg',
+    // 'https://images.craigslist.org/00I0I_gg4oMQaH7zt_600x450.jpg',
+    // 'https://images.craigslist.org/00x0x_hByB2A3KRP6_600x450.jpg',
+    // 'https://images.craigslist.org/00s0s_aRlNEFmxDzY_600x450.jpg',
+    // 'https://images.craigslist.org/00k0k_8rDbQqgbekx_600x450.jpg'
+    // ]
+    const allImgs = this.props.itemsPic.images;
     this.setState({
       allImgs,
       currentImg:allImgs[this.state.currentIndex]
     })
   }
 
+
+
   allImgsLoop = () =>{
+
     return this.state.allImgs.map((item,i) =>{
       return(
         <div key = {i} onClick = {this.clickedThumb.bind(null, i)} className = "thumb-img" style = {{
@@ -64,7 +79,10 @@ export default class Gallery extends Component {
   }
 
   render() {
+
     return(
+
+            
             <div className = "gallery">
             <div className = "slider">
             <div className = "main-image">
@@ -77,8 +95,7 @@ export default class Gallery extends Component {
             </div>
             <div className = "thumbnails">
               {this.allImgsLoop()}
-             
-             
+              {console.log(this.props.itemsPic.images)}
             </div>
             </div>
         

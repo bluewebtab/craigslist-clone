@@ -13,6 +13,8 @@ import Listings from './pages/Listings.js'
 import Category from './pages/Category.js'
 
 import Details from './pages/Details.js'
+import Gallery from './pages/components/Gallery.js'
+
 
 
 
@@ -22,7 +24,7 @@ export default class App extends Component {
   constructor () {
     super()
     this.state = {
-      name: 'Joe'
+      name: 'Ronny'
     }
   }
   
@@ -40,6 +42,7 @@ export default class App extends Component {
       <Route exact path = "/:city/:category/:listings" component = {Category} />
       
       <Route exact path = "/:city/:category/:listings/:details" component = {Details} />
+
 
 
     </div>

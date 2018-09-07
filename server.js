@@ -27,7 +27,7 @@ app.get('/api/:city/:category', function(req, res){
     let newData;
   if(req.query.min_price != undefined){
     newData = itemsData.filter((item)=>{
-      return item.city == req.params.city && item.category == req.params.category && item.price >= req.query.min_price && item.price <= req.query.max_price
+      return item.city == req.params.city && item.category == req.params.category && item.price >= req.query.min_price && item.price <= req.query.max_price && item.extraDetails.make == req.query.make && item.extraDetails.model == req.query.model
     })
     }else{
      newData = itemsData.filter((item)=>{

@@ -58,8 +58,8 @@ export default class Home extends Component {
         return (
           <div className="categories" key = {i} >
           
-            <a href={`/${match.params.city}/${category.title}`} className="title">{category.title}</a>
-            <div className={`group-links ${(category.title == 'for-sale' || category.title == 'jobs' || category.title == 'housing') ? 'single-col' : ''}`}>
+            <a href={`/${match.params.city}/${category.title}`} className="car-title">{category.title}</a>
+            <div className= 'car-link'>
             {loopListings()}
             </div>
           </div>
@@ -71,20 +71,13 @@ export default class Home extends Component {
     }
 
 
-  loopTags = () => {
-    let testTags = ['a', 'b', 'c', 'd','f','g', 'h']
-    return testTags.map((item, i)=>
-        <div key = {i} className = "tag">Apple macbook</div>
 
-      
-    )
-  }
   render() {
     return (
       <div className = "home">
       {console.log(this.props)}
       <div className = "container">
-        <h1>Connecting People <br /> Everywhere</h1>
+        <h1>Buy Your Dream Car Here </h1>
         <section className={'links'}>
           {this.loopCategories()}
         </section>
@@ -94,7 +87,7 @@ export default class Home extends Component {
           <i className="far fa-clock"></i> Trending Now
           </div>
           <div className = "trending-tags">
-          {this.loopTags()}
+         
           </div>
         </section>
         </div>

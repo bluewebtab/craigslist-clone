@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 125:
+/***/ 126:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22,25 +22,29 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _reactRouterDom = __webpack_require__(41);
 
-var _Header = __webpack_require__(145);
+var _Header = __webpack_require__(146);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Home = __webpack_require__(148);
+var _Home = __webpack_require__(149);
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _Listings = __webpack_require__(149);
+var _Listings = __webpack_require__(150);
 
 var _Listings2 = _interopRequireDefault(_Listings);
 
-var _Category = __webpack_require__(146);
+var _Category = __webpack_require__(147);
 
 var _Category2 = _interopRequireDefault(_Category);
 
-var _Details = __webpack_require__(147);
+var _Details = __webpack_require__(148);
 
 var _Details2 = _interopRequireDefault(_Details);
+
+var _Gallery = __webpack_require__(76);
+
+var _Gallery2 = _interopRequireDefault(_Gallery);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -59,7 +63,7 @@ var App = function (_Component) {
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
     _this.state = {
-      name: 'Joe'
+      name: 'Ronny'
     };
     return _this;
   }
@@ -91,7 +95,7 @@ exports.default = App;
 
 /***/ }),
 
-/***/ 144:
+/***/ 145:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -105,7 +109,7 @@ var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _App = __webpack_require__(125);
+var _App = __webpack_require__(126);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -117,7 +121,7 @@ _reactDom2.default.render(_react2.default.createElement(_App2.default, null), ap
 
 /***/ }),
 
-/***/ 145:
+/***/ 146:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -137,7 +141,7 @@ var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _axios = __webpack_require__(32);
+var _axios = __webpack_require__(26);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -241,7 +245,7 @@ var Header = function (_Component) {
             _react2.default.createElement(
               _reactRouterDom.Link,
               { className: 'logo', to: '/' + match.params.city },
-              'Ronny\'slist'
+              'Variety Vehicles'
             ),
             _react2.default.createElement(
               'div',
@@ -291,7 +295,7 @@ exports.default = Header;
 
 /***/ }),
 
-/***/ 146:
+/***/ 147:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -311,7 +315,7 @@ var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _axios = __webpack_require__(32);
+var _axios = __webpack_require__(26);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -409,7 +413,7 @@ var Category = function (_Component) {
             ),
             _react2.default.createElement(
               'select',
-              { name: 'make', className: 'make', onChange: _this.handleChange },
+              { name: 'make', className: 'make', onChange: _this.handleChange, value: _this.state.make },
               _react2.default.createElement(
                 'option',
                 { value: 'ford' },
@@ -424,6 +428,26 @@ var Category = function (_Component) {
                 'option',
                 { value: 'dodge' },
                 'dodge'
+              ),
+              _react2.default.createElement(
+                'option',
+                { value: 'bmw' },
+                'bmw'
+              ),
+              _react2.default.createElement(
+                'option',
+                { value: 'acura' },
+                'acura'
+              ),
+              _react2.default.createElement(
+                'option',
+                { value: 'chevy' },
+                'chevy'
+              ),
+              _react2.default.createElement(
+                'option',
+                { value: 'infiniti' },
+                'infiniti'
               )
             )
           ),
@@ -437,7 +461,7 @@ var Category = function (_Component) {
             ),
             _react2.default.createElement(
               'select',
-              { name: 'model', className: 'model', onChange: _this.handleChange },
+              { name: 'model', className: 'model', onChange: _this.handleChange, value: _this.state.model },
               _react2.default.createElement(
                 'option',
                 { value: 'focus' },
@@ -457,6 +481,26 @@ var Category = function (_Component) {
                 'option',
                 { value: 'challenger' },
                 'challenger'
+              ),
+              _react2.default.createElement(
+                'option',
+                { value: '328I' },
+                '328I'
+              ),
+              _react2.default.createElement(
+                'option',
+                { value: 'cruz' },
+                'cruz'
+              ),
+              _react2.default.createElement(
+                'option',
+                { value: 'MDX' },
+                'MDX'
+              ),
+              _react2.default.createElement(
+                'option',
+                { value: 'Q70' },
+                'Q70'
               )
             )
           )
@@ -483,10 +527,12 @@ var Category = function (_Component) {
           min_price = _this$state.min_price,
           max_price = _this$state.max_price,
           sort = _this$state.sort,
-          select_view = _this$state.select_view;
+          select_view = _this$state.select_view,
+          make = _this$state.make,
+          model = _this$state.model;
 
 
-      document.location.href = '/' + match.params.city + '/' + match.params.category + '?min_price=' + min_price + '&max_price=' + max_price + '&sort=' + sort + '&select_view=' + select_view;
+      document.location.href = '/' + match.params.city + '/' + match.params.category + '/' + match.params.listings + '?min_price=' + min_price + '&max_price=' + max_price + '&sort=' + sort + '&select_view=' + select_view + '&make=' + make + '&model=' + model;
 
       var queryParams = _queryString2.default.parse(_this.props.location.search);
     };
@@ -495,7 +541,9 @@ var Category = function (_Component) {
       min_price: 0,
       max_price: 10000,
       sort: 'newest',
-      select_view: 'gallery'
+      select_view: 'gallery',
+      make: 'ford',
+      model: 'focus'
     };
     return _this;
   }
@@ -503,21 +551,25 @@ var Category = function (_Component) {
   _createClass(Category, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
+      console.log(this.state);
       var _props = this.props,
           match = _props.match,
           history = _props.history;
 
       console.log(match.params.category);
       var self = this;
+      console.log(self.state.make);
 
       var queryParams = _queryString2.default.parse(this.props.location.search);
       var min_price = queryParams.min_price,
           max_price = queryParams.max_price,
           sort = queryParams.sort,
-          select_view = queryParams.select_view;
+          select_view = queryParams.select_view,
+          make = queryParams.make,
+          model = queryParams.model;
 
       if (queryParams.min_price != undefined) {
-        _axios2.default.get('/api/' + match.params.city + '/' + match.params.category + '?min_price=' + min_price + '&max_price=' + max_price + '&sort=' + sort + '&select_view=' + select_view).then(function (response) {
+        _axios2.default.get('/api/' + match.params.city + '/' + match.params.category + '?min_price=' + min_price + '&max_price=' + max_price + '&sort=' + sort + '&select_view=' + select_view + '&make=' + make + '&model=' + model).then(function (response) {
           self.setState({
             itemsData: response.data
           }, function () {
@@ -738,7 +790,7 @@ exports.default = Category;
 
 /***/ }),
 
-/***/ 147:
+/***/ 148:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -758,11 +810,11 @@ var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _Gallery = __webpack_require__(150);
+var _Gallery = __webpack_require__(76);
 
 var _Gallery2 = _interopRequireDefault(_Gallery);
 
-var _axios = __webpack_require__(32);
+var _axios = __webpack_require__(26);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -791,6 +843,9 @@ var Details = function (_Component) {
       if (_this.state.itemsData != undefined) {
         var carOne = _this.state.itemsData[0];
         var carTwo = _this.state.itemsData[1];
+        var carThree = _this.state.itemsData[2];
+        var carFour = _this.state.itemsData[3];
+
         if (match.params.details === carOne.title) {
 
           return _react2.default.createElement(
@@ -851,7 +906,7 @@ var Details = function (_Component) {
                   _react2.default.createElement(
                     'div',
                     { className: 'media-column' },
-                    _react2.default.createElement(_Gallery2.default, null)
+                    _react2.default.createElement(_Gallery2.default, { itemsPic: carOne })
                   ),
                   _react2.default.createElement(
                     'div',
@@ -941,8 +996,308 @@ var Details = function (_Component) {
               )
             )
           );
+        } else if (match.params.details === carTwo.title) {
+
+          return _react2.default.createElement(
+            'div',
+            { className: 'details-page' },
+            _react2.default.createElement(
+              'div',
+              { className: 'container' },
+              _react2.default.createElement(
+                'div',
+                { className: 'white-box' },
+                _react2.default.createElement(
+                  'section',
+                  { className: 'submenu' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'direction' },
+                    _react2.default.createElement(
+                      'a',
+                      { href: '#', className: 'prev' },
+                      'Prev'
+                    ),
+                    _react2.default.createElement(
+                      'a',
+                      { href: '#', className: 'next' },
+                      'Next'
+                    )
+                  ),
+                  console.log(match.params),
+                  _react2.default.createElement(
+                    'nav',
+                    { className: 'sub-links' },
+                    _react2.default.createElement(
+                      'a',
+                      { href: '#' },
+                      'More Ads by User'
+                    ),
+                    _react2.default.createElement(
+                      'a',
+                      { href: '#' },
+                      'Print'
+                    ),
+                    _react2.default.createElement(
+                      'a',
+                      { href: '#' },
+                      'Share'
+                    ),
+                    _react2.default.createElement(
+                      'a',
+                      { href: '#' },
+                      'Contact Seller'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'section',
+                  { className: 'content-area' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'media-column' },
+                    _react2.default.createElement(_Gallery2.default, { itemsPic: carTwo })
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'details-column' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'date' },
+                      'Posted: June 6th'
+                    ),
+                    _react2.default.createElement(
+                      'h3',
+                      { className: 'title' },
+                      carTwo.title
+                    ),
+                    _react2.default.createElement(
+                      'h4',
+                      { className: 'price' },
+                      carTwo.price
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'more-details' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'info' },
+                        _react2.default.createElement(
+                          'label',
+                          null,
+                          'VIN'
+                        ),
+                        _react2.default.createElement(
+                          'h5',
+                          null,
+                          carTwo.extraDetails.vin
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'info' },
+                        _react2.default.createElement(
+                          'label',
+                          null,
+                          'Mileage'
+                        ),
+                        _react2.default.createElement(
+                          'h5',
+                          null,
+                          carTwo.extraDetails.miles
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'info' },
+                        _react2.default.createElement(
+                          'label',
+                          null,
+                          'Transmission'
+                        ),
+                        _react2.default.createElement(
+                          'h5',
+                          null,
+                          carTwo.extraDetails.transmission
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'description' },
+                      _react2.default.createElement(
+                        'label',
+                        null,
+                        'Description'
+                      ),
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        'Lorem ipsum dolor amet vHS neutra unicorn marfa lomo crucifix tousled selfies palo santo. Banjo ugh health goth master cleanse put a bird on it paleo poke actually ennui franzen jean shorts pitchfork vice pop-up yr. Raclette blue bottle man bun biodiesel edison bulb. Distillery vexillologist franzen pug pop-up, blog mumblecore adaptogen meggings glossier ethical unicorn. Cliche godard coloring book hella, hell of seitan keffiyeh pok pok gluten-free butcher hammock echo park food truck blue bottle. Direct trade ennui cloud bread pour-over, offal kogi ramps humblebrag. Vexillologist everyday carry tumeric chicharrones narwhal dreamcatcher, farm-to-table migas artisan poutine kitsch hexagon gluten-free wolf keffiyeh.'
+                      ),
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        'Lorem ipsum dolor amet vHS neutra unicorn marfa lomo crucifix tousled selfies palo santo. Banjo ugh health goth master cleanse put a bird on it paleo poke actually ennui franzen jean shorts pitchfork vice pop-up yr. Raclette blue bottle man bun biodiesel edison bulb. Distillery vexillologist franzen pug pop-up, blog mumblecore adaptogen meggings glossier ethical unicorn. Cliche godard coloring book hella, hell of seitan keffiyeh pok pok gluten-free butcher hammock echo park food truck blue bottle. Direct trade ennui cloud bread pour-over, offal kogi ramps humblebrag. Vexillologist everyday carry tumeric chicharrones narwhal dreamcatcher, farm-to-table migas artisan poutine kitsch hexagon gluten-free wolf keffiyeh.'
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          );
+        } else if (match.params.details === carThree.title) {
+
+          return _react2.default.createElement(
+            'div',
+            { className: 'details-page' },
+            _react2.default.createElement(
+              'div',
+              { className: 'container' },
+              _react2.default.createElement(
+                'div',
+                { className: 'white-box' },
+                _react2.default.createElement(
+                  'section',
+                  { className: 'submenu' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'direction' },
+                    _react2.default.createElement(
+                      'a',
+                      { href: '#', className: 'prev' },
+                      'Prev'
+                    ),
+                    _react2.default.createElement(
+                      'a',
+                      { href: '#', className: 'next' },
+                      'Next'
+                    )
+                  ),
+                  console.log(match.params),
+                  _react2.default.createElement(
+                    'nav',
+                    { className: 'sub-links' },
+                    _react2.default.createElement(
+                      'a',
+                      { href: '#' },
+                      'More Ads by User'
+                    ),
+                    _react2.default.createElement(
+                      'a',
+                      { href: '#' },
+                      'Print'
+                    ),
+                    _react2.default.createElement(
+                      'a',
+                      { href: '#' },
+                      'Share'
+                    ),
+                    _react2.default.createElement(
+                      'a',
+                      { href: '#' },
+                      'Contact Seller'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'section',
+                  { className: 'content-area' },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'media-column' },
+                    _react2.default.createElement(_Gallery2.default, { itemsPic: carThree })
+                  ),
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'details-column' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'date' },
+                      'Posted: June 6th'
+                    ),
+                    _react2.default.createElement(
+                      'h3',
+                      { className: 'title' },
+                      carThree.title
+                    ),
+                    _react2.default.createElement(
+                      'h4',
+                      { className: 'price' },
+                      carThree.price
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'more-details' },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'info' },
+                        _react2.default.createElement(
+                          'label',
+                          null,
+                          'VIN'
+                        ),
+                        _react2.default.createElement(
+                          'h5',
+                          null,
+                          carThree.extraDetails.vin
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'info' },
+                        _react2.default.createElement(
+                          'label',
+                          null,
+                          'Mileage'
+                        ),
+                        _react2.default.createElement(
+                          'h5',
+                          null,
+                          carThree.extraDetails.miles
+                        )
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'info' },
+                        _react2.default.createElement(
+                          'label',
+                          null,
+                          'Transmission'
+                        ),
+                        _react2.default.createElement(
+                          'h5',
+                          null,
+                          carThree.extraDetails.transmission
+                        )
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'description' },
+                      _react2.default.createElement(
+                        'label',
+                        null,
+                        'Description'
+                      ),
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        'Lorem ipsum dolor amet vHS neutra unicorn marfa lomo crucifix tousled selfies palo santo. Banjo ugh health goth master cleanse put a bird on it paleo poke actually ennui franzen jean shorts pitchfork vice pop-up yr. Raclette blue bottle man bun biodiesel edison bulb. Distillery vexillologist franzen pug pop-up, blog mumblecore adaptogen meggings glossier ethical unicorn. Cliche godard coloring book hella, hell of seitan keffiyeh pok pok gluten-free butcher hammock echo park food truck blue bottle. Direct trade ennui cloud bread pour-over, offal kogi ramps humblebrag. Vexillologist everyday carry tumeric chicharrones narwhal dreamcatcher, farm-to-table migas artisan poutine kitsch hexagon gluten-free wolf keffiyeh.'
+                      ),
+                      _react2.default.createElement(
+                        'p',
+                        null,
+                        'Lorem ipsum dolor amet vHS neutra unicorn marfa lomo crucifix tousled selfies palo santo. Banjo ugh health goth master cleanse put a bird on it paleo poke actually ennui franzen jean shorts pitchfork vice pop-up yr. Raclette blue bottle man bun biodiesel edison bulb. Distillery vexillologist franzen pug pop-up, blog mumblecore adaptogen meggings glossier ethical unicorn. Cliche godard coloring book hella, hell of seitan keffiyeh pok pok gluten-free butcher hammock echo park food truck blue bottle. Direct trade ennui cloud bread pour-over, offal kogi ramps humblebrag. Vexillologist everyday carry tumeric chicharrones narwhal dreamcatcher, farm-to-table migas artisan poutine kitsch hexagon gluten-free wolf keffiyeh.'
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          );
         } else {
-          if (match.params.details === carTwo.title) {
+          if (match.params.details === carFour.title) {
 
             return _react2.default.createElement(
               'div',
@@ -1002,7 +1357,7 @@ var Details = function (_Component) {
                     _react2.default.createElement(
                       'div',
                       { className: 'media-column' },
-                      _react2.default.createElement(_Gallery2.default, null)
+                      _react2.default.createElement(_Gallery2.default, { itemsPic: carFour })
                     ),
                     _react2.default.createElement(
                       'div',
@@ -1015,12 +1370,12 @@ var Details = function (_Component) {
                       _react2.default.createElement(
                         'h3',
                         { className: 'title' },
-                        carTwo.title
+                        carFour.title
                       ),
                       _react2.default.createElement(
                         'h4',
                         { className: 'price' },
-                        carTwo.price
+                        carFour.price
                       ),
                       _react2.default.createElement(
                         'div',
@@ -1036,7 +1391,7 @@ var Details = function (_Component) {
                           _react2.default.createElement(
                             'h5',
                             null,
-                            carTwo.extraDetails.vin
+                            carFour.extraDetails.vin
                           )
                         ),
                         _react2.default.createElement(
@@ -1050,7 +1405,7 @@ var Details = function (_Component) {
                           _react2.default.createElement(
                             'h5',
                             null,
-                            carTwo.extraDetails.miles
+                            carFour.extraDetails.miles
                           )
                         ),
                         _react2.default.createElement(
@@ -1064,7 +1419,7 @@ var Details = function (_Component) {
                           _react2.default.createElement(
                             'h5',
                             null,
-                            carTwo.extraDetails.transmission
+                            carFour.extraDetails.transmission
                           )
                         )
                       ),
@@ -1143,7 +1498,7 @@ exports.default = Details;
 
 /***/ }),
 
-/***/ 148:
+/***/ 149:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1165,7 +1520,7 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _reactRouterDom = __webpack_require__(41);
 
-var _axios = __webpack_require__(32);
+var _axios = __webpack_require__(26);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -1206,12 +1561,12 @@ var Home = function (_Component) {
             { className: 'categories', key: i },
             _react2.default.createElement(
               'a',
-              { href: '/' + match.params.city + '/' + category.title, className: 'title' },
+              { href: '/' + match.params.city + '/' + category.title, className: 'car-title' },
               category.title
             ),
             _react2.default.createElement(
               'div',
-              { className: 'group-links ' + (category.title == 'for-sale' || category.title == 'jobs' || category.title == 'housing' ? 'single-col' : '') },
+              { className: 'car-link' },
               loopListings()
             )
           );
@@ -1219,17 +1574,6 @@ var Home = function (_Component) {
       } else {
         return 'LOADING';
       }
-    };
-
-    _this.loopTags = function () {
-      var testTags = ['a', 'b', 'c', 'd', 'f', 'g', 'h'];
-      return testTags.map(function (item, i) {
-        return _react2.default.createElement(
-          'div',
-          { key: i, className: 'tag' },
-          'Apple macbook'
-        );
-      });
     };
 
     _this.state = {
@@ -1278,9 +1622,7 @@ var Home = function (_Component) {
           _react2.default.createElement(
             'h1',
             null,
-            'Connecting People ',
-            _react2.default.createElement('br', null),
-            ' Everywhere'
+            'Buy Your Dream Car Here '
           ),
           _react2.default.createElement(
             'section',
@@ -1297,11 +1639,7 @@ var Home = function (_Component) {
               _react2.default.createElement('i', { className: 'far fa-clock' }),
               ' Trending Now'
             ),
-            _react2.default.createElement(
-              'div',
-              { className: 'trending-tags' },
-              this.loopTags()
-            )
+            _react2.default.createElement('div', { className: 'trending-tags' })
           )
         )
       );
@@ -1315,7 +1653,7 @@ exports.default = Home;
 
 /***/ }),
 
-/***/ 149:
+/***/ 150:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1557,7 +1895,7 @@ exports.default = Listings;
 
 /***/ }),
 
-/***/ 150:
+/***/ 76:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1577,6 +1915,10 @@ var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _axios = __webpack_require__(26);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1594,6 +1936,7 @@ var Gallery = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Gallery.__proto__ || Object.getPrototypeOf(Gallery)).call(this));
 
     _this.allImgsLoop = function () {
+
       return _this.state.allImgs.map(function (item, i) {
         return _react2.default.createElement('div', { key: i, onClick: _this.clickedThumb.bind(null, i), className: 'thumb-img', style: {
             "backgroundImage": 'url(' + item + ')' } });
@@ -1634,7 +1977,14 @@ var Gallery = function (_Component) {
   _createClass(Gallery, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      var allImgs = ['https://images.craigslist.org/00I0I_fA6pqL5Xh3h_600x450.jpg', 'https://images.craigslist.org/00W0W_jM9u9Fg2HfB_600x450.jpg', 'https://images.craigslist.org/00I0I_gg4oMQaH7zt_600x450.jpg', 'https://images.craigslist.org/00x0x_hByB2A3KRP6_600x450.jpg', 'https://images.craigslist.org/00s0s_aRlNEFmxDzY_600x450.jpg', 'https://images.craigslist.org/00k0k_8rDbQqgbekx_600x450.jpg'];
+      // const allImgs =['https://images.craigslist.org/00I0I_fA6pqL5Xh3h_600x450.jpg',
+      // 'https://images.craigslist.org/00W0W_jM9u9Fg2HfB_600x450.jpg',
+      // 'https://images.craigslist.org/00I0I_gg4oMQaH7zt_600x450.jpg',
+      // 'https://images.craigslist.org/00x0x_hByB2A3KRP6_600x450.jpg',
+      // 'https://images.craigslist.org/00s0s_aRlNEFmxDzY_600x450.jpg',
+      // 'https://images.craigslist.org/00k0k_8rDbQqgbekx_600x450.jpg'
+      // ]
+      var allImgs = this.props.itemsPic.images;
       this.setState({
         allImgs: allImgs,
         currentImg: allImgs[this.state.currentIndex]
@@ -1643,6 +1993,7 @@ var Gallery = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+
       return _react2.default.createElement(
         'div',
         { className: 'gallery' },
@@ -1669,7 +2020,8 @@ var Gallery = function (_Component) {
         _react2.default.createElement(
           'div',
           { className: 'thumbnails' },
-          this.allImgsLoop()
+          this.allImgsLoop(),
+          console.log(this.props.itemsPic.images)
         )
       );
     }
@@ -1682,4 +2034,4 @@ exports.default = Gallery;
 
 /***/ })
 
-},[144]);
+},[145]);
