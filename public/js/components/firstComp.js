@@ -37,7 +37,7 @@ var Layout = function (_Component) {
     };
 
     _this.state = {
-      name: 'Joe'
+     
     };
     return _this;
   }

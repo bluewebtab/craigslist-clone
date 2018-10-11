@@ -1,11 +1,9 @@
 {
-  "name": "CodingPhase-StarterKit",
+  
   "version": "1.0.0",
   "description": "Super Cool Framework",
   "main": "index.js",
-  "author": "joe santos garcia",
   "license": "MIT",
-  "homepage": "http://rocky.codingphase.com/",
   "dependencies": {
     "axios": "^0.16.2",
     "babel-core": "^6.24.1",

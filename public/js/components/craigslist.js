@@ -195,7 +195,6 @@ var Header = function (_Component) {
     };
 
     _this.state = {
-      name: 'Joe',
       cityDropdown: false,
       selectedCity: 'Los Angeles',
       citiesData: []

@@ -7,7 +7,7 @@ export default class Header extends Component {
   constructor() {
     super()
     this.state = {
-      name: 'Joe',
+      
       cityDropdown: false,
       selectedCity: 'Los Angeles',
       citiesData: []
